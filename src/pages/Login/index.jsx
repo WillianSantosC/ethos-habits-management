@@ -1,10 +1,43 @@
-import Button from "../../components/Button";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import api from "../../services/api";
 
 function Login() {
+  const schema = yup.object().shape({
+    username: yup.string().required("Required username"),
+    password: yup.string().required("Required password"),
+  });
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const handleNewUser = (data) => {
+    api
+      .post("/sessions/", data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(data);
+      });
+  };
+
   return (
     <div>
-      <h1>Login</h1>
-      <Button />
+      <form onSubmit={handleSubmit(handleNewUser)} className="formInputs">
+        <h1>Login</h1>
+
+        <input type="text" placeholder="Username" {...register("username")} />
+
+        <input
+          type="password"
+          placeholder="Password"
+          {...register("password")}
+        />
+
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 }
