@@ -1,11 +1,13 @@
 import { GroupProvider } from "./Group";
 import { UserProvider } from "./User";
-
+import { AccessProvider } from "./Access";
 function Providers({ children }) {
   return (
-    <UserProvider>
-      <GroupProvider>{children}</GroupProvider>
-    </UserProvider>
+    <AccessProvider>
+      <UserProvider>
+        <GroupProvider>{children}</GroupProvider>
+      </UserProvider>
+    </AccessProvider>
   );
 }
 
