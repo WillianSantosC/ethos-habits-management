@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import UserProfile from "../UserProfile";
 import { MenuContainer } from "./styles";
 
 function Menu() {
@@ -6,11 +8,18 @@ function Menu() {
       <span>ethos_</span>
       <nav>
         <ul>
-          <li>Dashboard</li>
-          <li>Groups</li>
-          <li>Habits</li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="/groups">Groups</Link>
+          </li>
+          <li>
+            <Link to="/habits">Habits</Link>
+          </li>
         </ul>
       </nav>
+      <UserProfile />
     </MenuContainer>
   );
 }
