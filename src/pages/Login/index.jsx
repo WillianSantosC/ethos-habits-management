@@ -2,8 +2,11 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
-
+import { useContext } from "react";
+import { AccessContext } from "../../providers/Access";
 function Login() {
+  const { addToLocalStorage } = useContext(AccessContext);
+
   const schema = yup.object().shape({
     username: yup.string().required("Required username"),
     password: yup.string().required("Required password"),
@@ -15,7 +18,9 @@ function Login() {
     api
       .post("/sessions/", data)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
+        const { access } = response.data;
+        addToLocalStorage(access);
       })
       .catch((err) => {
         console.log(err);
