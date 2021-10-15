@@ -51,5 +51,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:WillianSantosC/ethos-habits-management.git",
+  "author": "Madu Rubini <mariaed.rubini@gmail.com>",
+  "license": "MIT"
 }
