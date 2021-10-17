@@ -20,6 +20,7 @@ function Login() {
       .then((response) => {
         console.log(response.data);
         const { access } = response.data;
+        console.log(access);
         addToLocalStorage(access);
       })
       .catch((err) => {
