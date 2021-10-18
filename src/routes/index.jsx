@@ -1,7 +1,5 @@
 import { Switch, Route } from "react-router";
 import Dashboard from "../pages/Dashboard";
-import Groups from "../pages/Groups";
-import Habits from "../pages/Habits";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
@@ -18,14 +16,6 @@ function Routes() {
 
       <Route path="/dashboard">
         <Dashboard />
-      </Route>
-
-      <Route path="/groups">
-        <Groups />
-      </Route>
-
-      <Route path="/habits">
-        <Habits />
       </Route>
     </Switch>
   );
