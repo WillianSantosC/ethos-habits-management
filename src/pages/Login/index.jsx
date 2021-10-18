@@ -2,16 +2,28 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AccessContext } from "../../providers/Access";
+import { TextField, InputAdornment, IconButton } from "@material-ui/core";
+import { useHistory } from "react-router";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import { toast } from "react-hot-toast";
+
 function Login() {
   const { addToLocalStorage } = useContext(AccessContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const history = useHistory();
 
   const schema = yup.object().shape({
     username: yup.string().required("Required username"),
     password: yup.string().required("Required password"),
   });
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
   const handleNewUser = (data) => {
@@ -20,12 +32,13 @@ function Login() {
       .then((response) => {
         console.log(response.data);
         const { access } = response.data;
-        console.log(access);
+        toast.success("Login succesfully");
         addToLocalStorage(access);
+        return history.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
-        console.log(data);
+        toast.error("Login unsuccessfully");
       });
   };
 
@@ -34,11 +47,34 @@ function Login() {
       <form onSubmit={handleSubmit(handleNewUser)} className="formInputs">
         <h1>Login</h1>
 
-        <input type="text" placeholder="Username" {...register("username")} />
+        <TextField
+          size="small"
+          margin="none"
+          type="text"
+          variant="outlined"
+          error={!!errors.username}
+          helperText={errors.username?.message}
+          placeholder="Username"
+          {...register("username")}
+        />
 
-        <input
-          type="password"
+        <TextField
           placeholder="Password"
+          size="small"
+          type={showPassword ? "text" : "password"}
+          variant="outlined"
+          margin="none"
+          error={!!errors.password}
+          helperText={errors.password?.message}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment>
+                <IconButton onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
           {...register("password")}
         />
 
