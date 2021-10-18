@@ -1,15 +1,15 @@
-const GroupCard = ({
+const SubGroupsCard = ({
   group: { id, name, description, category },
-  unsubscribeGroup,
+  subscribeUser,
 }) => {
   return (
     <li>
       <h3>{name}</h3>
       <p>{description}</p>
       <p>{category}</p>
-      <button onClick={() => unsubscribeGroup(id)}>Unsubscribe</button>
+      <button onClick={() => subscribeUser(id)}>Subscribe</button>
     </li>
   );
 };
 
-export default GroupCard;
+export default SubGroupsCard;

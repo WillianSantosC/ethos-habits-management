@@ -39,7 +39,7 @@ function Habits() {
       difficulty,
       frequency,
       how_much_achieved: 0,
-      user: 154,
+      user: 1,
     };
 
     api

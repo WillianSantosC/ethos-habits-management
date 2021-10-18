@@ -9,9 +9,11 @@ import { useHistory } from "react-router";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { toast } from "react-hot-toast";
+import { UserContext } from "../../providers/User";
 
 function Login() {
   const { addToLocalStorage } = useContext(AccessContext);
+  const { addUsernameToLocal } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
 
@@ -34,6 +36,7 @@ function Login() {
         const { access } = response.data;
         toast.success("Login succesfully");
         addToLocalStorage(access);
+        addUsernameToLocal(data.username);
         return history.push("/dashboard");
       })
       .catch((err) => {
