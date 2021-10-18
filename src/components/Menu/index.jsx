@@ -1,22 +1,24 @@
 import { Link } from "react-router-dom";
 import UserProfile from "../UserProfile";
-import { MenuContainer } from "./styles";
+import { Li, MenuContainer } from "./styles";
 
 function Menu() {
   return (
     <MenuContainer>
-      <span>ethos_</span>
+      <h3>
+        ethos<span>_</span>
+      </h3>
       <nav>
         <ul>
-          <li>
+          <Li highlighted>
             <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
+          </Li>
+          <Li>
             <Link to="/groups">Groups</Link>
-          </li>
-          <li>
+          </Li>
+          <Li>
             <Link to="/habits">Habits</Link>
-          </li>
+          </Li>
         </ul>
       </nav>
       <UserProfile />
