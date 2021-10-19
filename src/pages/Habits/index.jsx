@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
+import { AccessContext } from "../../providers/Access";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,6 +11,8 @@ import { CardContainer } from "./style";
 
 function Habits() {
   const { getHabits, myHabits } = useContext(HabitsContext);
+
+  const { parse, token } = useContext(AccessContext);
 
   const formSchema = yup.object().shape({
     title: yup.string().required("Campo Obrigatório"),
@@ -29,9 +32,6 @@ function Habits() {
     resolver: yupResolver(formSchema),
   });
 
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM0OTA4OTM3LCJqdGkiOiI5ZjFhY2IzOTVlM2U0NDFlOGZhYmMwN2FlMDFmMzIwZSIsInVzZXJfaWQiOjE1NH0.gN5205MvYs1_uEteOOXRFbjOAbUDqhF-99Idt4tfHFc";
-
   function handleData({ title, category, difficulty, frequency }) {
     const data = {
       title,
@@ -39,7 +39,7 @@ function Habits() {
       difficulty,
       frequency,
       how_much_achieved: 0,
-      user: 154,
+      user: parse.user_id,
     };
 
     api
@@ -51,6 +51,7 @@ function Habits() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
+
   return (
     <div>
       <h1>Habits</h1>

@@ -5,10 +5,10 @@ export const HabitsContext = createContext([]);
 
 export const HabitsProvider = ({ children }) => {
   const [myHabits, setMyHabits] = useState([]);
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@ethos:access")) || ""
+  );
 
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM0OTA4OTM3LCJqdGkiOiI5ZjFhY2IzOTVlM2U0NDFlOGZhYmMwN2FlMDFmMzIwZSIsInVzZXJfaWQiOjE1NH0.gN5205MvYs1_uEteOOXRFbjOAbUDqhF-99Idt4tfHFc";
-  // O token foi pego da api e colocado aqui para teste
   function getHabits() {
     api
       .get("/habits/personal/", {
@@ -19,6 +19,7 @@ export const HabitsProvider = ({ children }) => {
       .then((res) => setMyHabits(res.data))
       .catch((err) => console.log(err));
   }
+
   useEffect(() => {
     getHabits();
   }, [myHabits]);
