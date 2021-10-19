@@ -6,11 +6,13 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: 0;
+        list-style-type: none;
     }
 
     :root{
        --background: #23212C;
        --font-color: #FFFFFF;
+       --font-transparent: #ffffffcc;
        --input-background: #373645;
        --input-color: #9693A6;
        --button1: linear-gradient(90deg, #EC008C 0%, #FC6767 100%);
