@@ -1,4 +1,5 @@
 import { UserContainer } from "./styles";
+import LogOff from "../../assets/img/right-arrow.png";
 
 function UserProfile() {
   return (
@@ -8,8 +9,11 @@ function UserProfile() {
         alt="Foto do Usuário"
       />
       <div>
-        <h3>Username</h3>
+        <span>Username</span>
         <span>UserMail</span>
+      </div>
+      <div>
+        <img src={LogOff} alt="LogOff" srcset="" />
       </div>
     </UserContainer>
   );

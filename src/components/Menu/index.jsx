@@ -1,22 +1,56 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import UserProfile from "../UserProfile";
-import { MenuContainer } from "./styles";
+import { Li, MenuContainer } from "./styles";
 
 function Menu() {
+  const [dashboard, setDashboard] = useState(true);
+  const [groups, setGroups] = useState(false);
+  const [habits, setHabits] = useState(false);
+
   return (
     <MenuContainer>
-      <span>ethos_</span>
+      <h3>
+        ethos<span>_</span>
+      </h3>
       <nav>
         <ul>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/groups">Groups</Link>
-          </li>
-          <li>
-            <Link to="/habits">Habits</Link>
-          </li>
+          <Li highlighted={dashboard}>
+            <Link
+              to="/dashboard"
+              onClick={() => {
+                setGroups(false);
+                setHabits(false);
+                setDashboard(true);
+              }}
+            >
+              Dashboard
+            </Link>
+          </Li>
+          <Li highlighted={groups}>
+            <Link
+              to="/groups"
+              onClick={() => {
+                setGroups(true);
+                setHabits(false);
+                setDashboard(false);
+              }}
+            >
+              Groups
+            </Link>
+          </Li>
+          <Li highlighted={habits}>
+            <Link
+              to="/habits"
+              onClick={() => {
+                setGroups(false);
+                setHabits(true);
+                setDashboard(false);
+              }}
+            >
+              Habits
+            </Link>
+          </Li>
         </ul>
       </nav>
       <UserProfile />
