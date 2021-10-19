@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { GoalsContext } from "../../providers/Goal";
 
 const GroupCard = ({
   group: { id, name, description, category },

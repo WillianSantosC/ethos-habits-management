@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import CreateGroup from "../../components/CreateGroup";
 import GroupCard from "../../components/GroupCard";
 import SubGroupsCard from "../../components/SubGroupsCard";
@@ -29,13 +28,11 @@ function Groups() {
 
       <ul>
         {groups.map((item) => (
-          <Link to={`/groups/${item.id}`} key={item.id}>
-            <SubGroupsCard
-              group={item}
-              key={item.id}
-              subscribeUser={subscribeUser}
-            />
-          </Link>
+          <SubGroupsCard
+            group={item}
+            key={item.id}
+            subscribeUser={subscribeUser}
+          />
         ))}
       </ul>
       <button onClick={() => previousPage()}>Previous Page</button>
