@@ -2,8 +2,9 @@ import { Grid, TextField, Button, Container } from "@material-ui/core";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
+import { useContext } from "react";
 
 const CreateGroup = () => {
   const formSchema = yup.object().shape({
@@ -12,9 +13,7 @@ const CreateGroup = () => {
     category: yup.string().required("Campo Obrigatório"),
   });
 
-  const token = useState(
-    JSON.parse(localStorage.getItem("@ethos:access")) || ""
-  );
+  const { token } = useContext(AccessContext);
 
   const {
     register,
@@ -24,12 +23,7 @@ const CreateGroup = () => {
     resolver: yupResolver(formSchema),
   });
 
-  function handleData({ name, category, description }) {
-    const data = {
-      name,
-      category,
-      description,
-    };
+  function handleData(data) {
     api
       .post("/groups/", data, {
         headers: {

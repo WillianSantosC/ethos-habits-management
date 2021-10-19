@@ -12,7 +12,7 @@ import { toast } from "react-hot-toast";
 import { UserContext } from "../../providers/User";
 
 function Login() {
-  const { addToLocalStorage } = useContext(AccessContext);
+  const { addToLocalStorage, setToken } = useContext(AccessContext);
   const { addUsernameToLocal } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
@@ -21,6 +21,7 @@ function Login() {
     username: yup.string().required("Required username"),
     password: yup.string().required("Required password"),
   });
+
   const {
     register,
     handleSubmit,
@@ -28,13 +29,14 @@ function Login() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   const handleNewUser = (data) => {
     api
       .post("/sessions/", data)
       .then((response) => {
-        console.log(response.data);
         const { access } = response.data;
         toast.success("Login succesfully");
+        setToken(access);
         addToLocalStorage(access);
         addUsernameToLocal(data.username);
         return history.push("/dashboard");

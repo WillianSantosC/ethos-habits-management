@@ -1,12 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
+import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
 
 export const GroupContext = createContext([]);
 
 export const GroupProvider = ({ children }) => {
-  const token = useState(
-    JSON.parse(localStorage.getItem("@ethos:access")) || ""
-  );
+  const { token } = useContext(AccessContext);
 
   const [myGroups, setMyGroups] = useState([]);
   const [groups, setGroups] = useState([]);
@@ -58,7 +57,7 @@ export const GroupProvider = ({ children }) => {
 
   useEffect(() => {
     getUserGroups();
-  }, [myGroups]);
+  }, []);
 
   useEffect(() => {
     allGroups();
