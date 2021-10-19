@@ -70,6 +70,7 @@ export const GroupProvider = ({ children }) => {
       setPage(page - 1);
     }
   }
+
   useEffect(() => {
     getUserGroups();
   }, [myGroups]);

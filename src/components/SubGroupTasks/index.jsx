@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { GoalsContext } from "../../providers/Goal";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -29,7 +29,9 @@ function SubGroupTasks() {
     resolver: yupResolver(schema),
   });
 
-  getGroupGoals(id);
+  useEffect(() => {
+    getGroupGoals(id);
+  }, [groupGoals]);
 
   function onSubmit({ title, difficulty }) {
     const data = { title, difficulty, how_much_achieved: 0, group: id };
@@ -88,18 +90,16 @@ function SubGroupTasks() {
         <button type="submit">Add Goal</button>
       </form>
       {groupGoals.map((item, index) => (
-        <>
-          <Card key={index}>
-            <p>{item.title}</p>
-            <p>{item.difficulty}</p>
-            <p>{item.how_much_achieved}</p>
-            <p>{item.achieved ? "completo" : "incompleto"}</p>
-            <button onClick={() => handleEditGoal(item.id, item.achieved)}>
-              Editar
-            </button>
-            <AiOutlineCloseCircle onClick={() => deleteGoal(item.id)} />
-          </Card>
-        </>
+        <Card key={index}>
+          <p>{item.title}</p>
+          <p>{item.difficulty}</p>
+          <p>{item.how_much_achieved}</p>
+          <p>{item.achieved ? "completo" : "incompleto"}</p>
+          <button onClick={() => handleEditGoal(item.id, item.achieved)}>
+            Editar
+          </button>
+          <AiOutlineCloseCircle onClick={() => deleteGoal(item.id)} />
+        </Card>
       ))}
       <ActivityForm></ActivityForm>
     </>
