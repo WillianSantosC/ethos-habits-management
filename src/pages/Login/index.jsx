@@ -12,7 +12,7 @@ import { toast } from "react-hot-toast";
 import { UserContext } from "../../providers/User";
 
 function Login() {
-  const { addToLocalStorage, setToken } = useContext(AccessContext);
+  const { addToLocalStorage, token } = useContext(AccessContext);
   const { addUsernameToLocal } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
@@ -36,7 +36,6 @@ function Login() {
       .then((response) => {
         const { access } = response.data;
         toast.success("Login succesfully");
-        setToken(access);
         addToLocalStorage(access);
         addUsernameToLocal(data.username);
         return history.push("/dashboard");
