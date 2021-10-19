@@ -1,27 +1,6 @@
 import { UserContainer } from "./styles";
-import LogOff from "../../assets/img/right-arrow.png";
-import { useHistory } from "react-router";
-import { useEffect, useState } from "react";
-import api from "../../services/api";
-import jwtDecode from "jwt-decode";
 
 function UserProfile() {
-  const history = useHistory();
-  const [userInfo, setUserInfo] = useState({});
-  const [decodedUser] = useState(
-    jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
-  );
-
-  function getUserInfo() {
-    api
-      .get(`users/${decodedUser.user_id}/`)
-      .then((res) => setUserInfo(res.data));
-  }
-
-  useEffect(() => {
-    getUserInfo();
-  });
-
   return (
     <UserContainer>
       <img
@@ -29,19 +8,8 @@ function UserProfile() {
         alt="Foto do Usuário"
       />
       <div>
-        <span>{userInfo.username}</span>
-        <span>{userInfo.email}</span>
-      </div>
-      <div>
-        <img
-          src={LogOff}
-          alt="LogOff"
-          srcset=""
-          onClick={() => {
-            localStorage.clear();
-            history.push("/");
-          }}
-        />
+        <h3>Username</h3>
+        <span>UserMail</span>
       </div>
     </UserContainer>
   );
