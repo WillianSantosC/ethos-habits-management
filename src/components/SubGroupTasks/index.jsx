@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField } from "@material-ui/core";
 import { Card } from "./style";
 import api from "../../services/api";
+import ActivityForm from "../ActivityForm";
 
 function SubGroupTasks() {
   const { id } = useParams();
@@ -16,8 +17,8 @@ function SubGroupTasks() {
   const { token } = useContext(AccessContext);
 
   const schema = yup.object().shape({
-    title: yup.string().required("Required username"),
-    difficulty: yup.string().required("Required password"),
+    title: yup.string().required("Required Field"),
+    difficulty: yup.string().required("Required Field"),
   });
 
   const {
@@ -84,7 +85,7 @@ function SubGroupTasks() {
           {...register("difficulty")}
         />
 
-        <button type="submit">Add</button>
+        <button type="submit">Add Goal</button>
       </form>
       {groupGoals.map((item, index) => (
         <>
@@ -100,6 +101,7 @@ function SubGroupTasks() {
           </Card>
         </>
       ))}
+      <ActivityForm></ActivityForm>
     </>
   );
 }
