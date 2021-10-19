@@ -100,7 +100,7 @@ function Register() {
                 {...register("password")}
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment>
+                    <InputAdornment position="end">
                       <IconButton
                         onClick={() => setShowPassword(!showPassword)}
                       >
@@ -127,7 +127,7 @@ function Register() {
                 {...register("confirmPassword")}
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment>
+                    <InputAdornment position="end">
                       <IconButton
                         onClick={() => setConfirmPassword(!confirmPassword)}
                       >

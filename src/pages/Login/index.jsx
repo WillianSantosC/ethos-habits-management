@@ -72,7 +72,7 @@ function Login() {
           helperText={errors.password?.message}
           InputProps={{
             endAdornment: (
-              <InputAdornment>
+              <InputAdornment position="end">
                 <IconButton onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                 </IconButton>

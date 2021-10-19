@@ -51,7 +51,6 @@ function Habits() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
-  console.log(parse);
 
   return (
     <div>
