@@ -11,7 +11,6 @@ function UserProfile() {
   const [decodedUser] = useState(
     jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
   );
-
   function getUserInfo() {
     api
       .get(`users/${decodedUser.user_id}/`)
