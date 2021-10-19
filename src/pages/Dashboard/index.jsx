@@ -1,7 +1,6 @@
 import { useState } from "react";
 import BoxInfo from "../../components/BoxInfo";
 import Menu from "../../components/Menu";
-import { DashboardContainer } from "./styles";
 
 function Dashboard() {
   const username = useState(
@@ -9,14 +8,14 @@ function Dashboard() {
   );
 
   return (
-    <DashboardContainer>
+    <div>
       <Menu />
       <div>
         <h1>Dashboard</h1>
         <h2>{username}</h2>
         <BoxInfo />
       </div>
-    </DashboardContainer>
+    </div>
   );
 }
 
