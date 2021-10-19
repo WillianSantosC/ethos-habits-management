@@ -42,6 +42,20 @@ function SubGroupTasks() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
+  function handleEditGoal(id, boolean) {
+    const jsonToApi = {
+      achieved: !boolean,
+    };
+
+    api
+      .patch(`/goals/${id}/`, jsonToApi, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
 
   return (
     <>
@@ -78,6 +92,10 @@ function SubGroupTasks() {
             <p>{item.title}</p>
             <p>{item.difficulty}</p>
             <p>{item.how_much_achieved}</p>
+            <p>{item.achieved ? "completo" : "incompleto"}</p>
+            <button onClick={() => handleEditGoal(item.id, item.achieved)}>
+              Editar
+            </button>
             <AiOutlineCloseCircle onClick={() => deleteGoal(item.id)} />
           </Card>
         </>
