@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import UserProfile from "../UserProfile";
 import { Li, MenuContainer } from "./styles";
+import DashboardIcon from "../../assets/img/organizer.png";
+import GroupsIcon from "../../assets/img/personal-data.png";
+import HabitsIcon from "../../assets/img/pen.png";
 
 function Menu() {
   const [dashboard, setDashboard] = useState(true);
@@ -24,7 +27,8 @@ function Menu() {
                 setDashboard(true);
               }}
             >
-              Dashboard
+              <img src={DashboardIcon} alt="Dashboard" className="iconImage" />
+              <span>Dashboard</span>
             </Link>
           </Li>
           <Li highlighted={groups}>
@@ -36,7 +40,8 @@ function Menu() {
                 setDashboard(false);
               }}
             >
-              Groups
+              <img src={GroupsIcon} alt="Groups" className="iconImage" />
+              <span>Groups</span>
             </Link>
           </Li>
           <Li highlighted={habits}>
@@ -48,7 +53,8 @@ function Menu() {
                 setDashboard(false);
               }}
             >
-              Habits
+              <img src={HabitsIcon} alt="Habits" className="iconImage" />
+              <span>Habits</span>
             </Link>
           </Li>
         </ul>
