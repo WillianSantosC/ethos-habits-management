@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router";
 import { ActivityContext } from "../../providers/Activity";
 import * as moment from "moment";
@@ -23,9 +23,9 @@ const ActivityForm = () => {
 
   const [isShow, setIsShow] = useState(false);
 
-  // function CallEditComponent() {
-  //   setIsShow(true);
-  // }
+  function CallEditComponent() {
+    setIsShow(true);
+  }
 
   const schema = yup.object().shape({
     titleActivity: yup.string().required("Required Field"),
@@ -39,9 +39,7 @@ const ActivityForm = () => {
     resolver: yupResolver(schema),
   });
 
-  useEffect(() => {
-    getGroupActivity(id);
-  }, [groupActivity]);
+  getGroupActivity(id);
 
   function onSubmitActivity({ titleActivity }) {
     const data = {
