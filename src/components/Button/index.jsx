@@ -2,7 +2,7 @@ import { Container } from "./style";
 
 const Button = ({ children, pinkSchema = false, ...rest }) => {
   return (
-    <Container whiteSchema={pinkSchema} type="button" {...rest}>
+    <Container pinkSchema={pinkSchema} type="button" {...rest}>
       {children}
     </Container>
   );

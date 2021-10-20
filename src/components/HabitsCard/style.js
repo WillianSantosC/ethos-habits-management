@@ -7,7 +7,7 @@ export const Card = styled.div`
   flex-direction: column;
   background: var(--boxes);
   gap: 5px;
-  width: 220px;
+  width: 75%;
   min-height: 125px;
   border-radius: 6px;
   border: 1px solid var(--background);
@@ -21,6 +21,10 @@ export const Card = styled.div`
 
   #PinIcon {
     font-size: 20px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 220px;
   }
 `;
 

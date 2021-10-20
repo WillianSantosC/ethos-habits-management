@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const PageContainer = styled.div`
   display: flex;
   width: 100%;
-  margin: 0 auto;
+  margin: 100px auto;
 `;
 
 export const GroupContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 80%;
+  width: 90%;
   padding: 1%;
 `;
 
@@ -30,9 +30,10 @@ export const List = styled.ul`
   height: 150px;
   background: #2c212a;
   padding: 3px;
+  justify-content: center;
 `;
 
 export const Title = styled.h3`
   font-weight: lighter;
-  font-size: 1.7em;
+  font-size: 1.5em;
 `;

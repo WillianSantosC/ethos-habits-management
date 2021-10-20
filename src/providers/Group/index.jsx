@@ -76,11 +76,9 @@ export const GroupProvider = ({ children }) => {
     }
   }
 
-  useEffect(() => {
-    if (myGroups.length === 0) {
-      getUserGroups();
-    }
-  }, [myGroups, getUserGroups]);
+  // useEffect(() => {
+  //   getUserGroups();
+  // }, [getUserGroups]);
 
   useEffect(() => {
     if (groups.length === 0) {
@@ -97,6 +95,8 @@ export const GroupProvider = ({ children }) => {
         unsubscribeGroup,
         nextPage,
         previousPage,
+        getUserGroups,
+        allGroups
       }}
     >
       {children}

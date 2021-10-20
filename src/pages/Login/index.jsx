@@ -10,12 +10,30 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { toast } from "react-hot-toast";
 import { UserContext } from "../../providers/User";
+import { Animation, Container, MainContainer } from "./style";
+import Lottie from "react-lottie";
+import animationData from "../../assets/animations/Login.json";
+import Button from "../../components/Button";
+import ImgManagement from "../../assets/img/management (1).png";
+import ImgHighFive from "../../assets/img/high-five.png";
 
 function Login() {
   const { addToLocalStorage, token } = useContext(AccessContext);
   const { addUsernameToLocal } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
+  const [animationState, setAnimationState] = useState({
+    isStopped: false,
+    isPaused: false,
+  });
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   const schema = yup.object().shape({
     username: yup.string().required("Required username"),
@@ -47,44 +65,98 @@ function Login() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(handleNewUser)} className="formInputs">
-        <h1>Login</h1>
+    <MainContainer>
+      <div>
+        <Container>
+          <h2>
+            ethos<span>_</span>
+          </h2>
+          <div id="form-container">
+            <form onSubmit={handleSubmit(handleNewUser)}>
+              <h1>Login</h1>
+              <TextField
+                margin="none"
+                label="Nome"
+                fullWidth
+                size="small"
+                variant="filled"
+                placeholder="Digite seu nome"
+                error={!!errors.username}
+                helperText={errors.username?.message}
+                {...register("username")}
+              />
 
-        <TextField
-          size="small"
-          margin="none"
-          type="text"
-          variant="outlined"
-          error={!!errors.username}
-          helperText={errors.username?.message}
-          placeholder="Username"
-          {...register("username")}
-        />
+              <TextField
+                type={showPassword ? "text" : "password"}
+                label="Senha"
+                placeholder="Digite sua senha"
+                margin="none"
+                size="small"
+                fullWidth
+                variant="filled"
+                error={!!errors.password}
+                helperText={errors.password?.message}
+                {...register("password")}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
 
-        <TextField
-          placeholder="Password"
-          size="small"
-          type={showPassword ? "text" : "password"}
-          variant="outlined"
-          margin="none"
-          error={!!errors.password}
-          helperText={errors.password?.message}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-          {...register("password")}
-        />
+              <Button pinkSchema type="submit">
+                Entrar
+              </Button>
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
+              <div id="label">
+                <div></div>
+                <p>ou</p>
+                <div></div>
+              </div>
+
+              <Button onClick={() => history.push("/register")}>
+                Cadastre-se
+              </Button>
+            </form>
+          </div>
+
+          <Animation>
+            <h1>
+              Bem vindo ao <span>ethos_</span>
+            </h1>
+
+            <Lottie
+              options={defaultOptions}
+              height={300}
+              width={300}
+              speed={0.5}
+              isStopped={animationState.isStopped}
+              isPaused={animationState.isPaused}
+            />
+            <div id="iconsInfo">
+              <div id="boxImg">
+                <img src={ImgManagement} alt="management" />
+                <p>Controle seus hábitos facilmente</p>
+              </div>
+              <div id="boxImg">
+                <img src={ImgHighFive} alt="highfive" />
+                <p>Um lugar para fazer amigos</p>
+              </div>
+            </div>
+          </Animation>
+        </Container>
+      </div>
+    </MainContainer>
   );
 }
 

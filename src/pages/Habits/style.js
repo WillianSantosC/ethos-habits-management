@@ -11,7 +11,7 @@ export const CardContainer = styled.div`
 export const HabitsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 80%;
+  width: 95%;
   padding: 1%;
   flex-direction: column;
 `;
