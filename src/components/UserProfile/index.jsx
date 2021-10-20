@@ -20,7 +20,7 @@ function UserProfile() {
 
   useEffect(() => {
     getUserInfo();
-  });
+  }, []);
 
   return (
     <UserContainer>
