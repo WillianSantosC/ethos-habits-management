@@ -8,6 +8,7 @@ export const UserContainer = styled.div `
   height: 100px;
   padding: 20px 10px;
   background-color: var(--background);
+  width: 100vw;
 
   > img {
     height: 60px;

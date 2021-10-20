@@ -23,9 +23,11 @@ const BoxInfo = () => {
       <ul>
         {dataCard.map((item, index) => (
           <li key={index}>
-            <span className="boxTitle">{item.name}</span>
+            <div>
+              <span className="boxTitle">{item.name}</span>
+              <span className="boxNumber">{item.quantity}</span>
+            </div>
             <img src={item.icon} alt={item.name}></img>
-            <span className="boxNumber">{item.quantity}</span>
           </li>
         ))}
       </ul>
