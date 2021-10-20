@@ -67,6 +67,7 @@ export const UserContainer = styled.div `
     background: none;
     height: 65px;
     margin-left: -5px;
+    width: 200px;
 
     >img{
       margin: 0 10px 0 -5px;
@@ -92,12 +93,13 @@ export const UserContainer = styled.div `
       .name {
         display: flex;
         flex-direction: row;
+        max-width: 100px;
+
         span {
         font-size: 0.8rem;
         overflow: hidden;
         padding: 0;
         text-overflow: ellipsis;
-        max-width: 80px;
         display: block;
         &::before{
           content: none;
@@ -112,11 +114,11 @@ export const UserContainer = styled.div `
         font-size: 0.8rem;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 80px;
+        max-width: 100px;
         span {
           overflow: hidden;
           text-overflow: ellipsis;
-          max-width: 80px;
+          max-width: 100px;
           display: block;
         }
       }
