@@ -12,12 +12,14 @@ import { TextField } from "@material-ui/core";
 import { Card } from "../SubGroupTasks/style";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import InputEditActivity from "../InputEditActivity";
+import DateTimePicker from "react-datetime-picker";
 
 const ActivityForm = () => {
   const { id } = useParams();
   const { groupActivity, getGroupActivity, deleteActivity } =
     useContext(ActivityContext);
   const { token } = useContext(AccessContext);
+  const [calendar, setCalendar] = useState(new Date());
 
   const [isShow, setIsShow] = useState(false);
 
@@ -44,7 +46,7 @@ const ActivityForm = () => {
   function onSubmitActivity({ titleActivity }) {
     const data = {
       title: titleActivity,
-      realization_time: "2021-11-20T15:00:00Z",
+      realization_time: calendar,
       group: id,
     };
     api
@@ -58,6 +60,7 @@ const ActivityForm = () => {
         console.log(err);
         console.log(data);
       });
+    console.log(calendar);
   }
   return (
     <>
@@ -75,17 +78,23 @@ const ActivityForm = () => {
           placeholder="title"
           {...register("titleActivity")}
         />
+        <DateTimePicker
+          value={calendar}
+          onChange={(val) => setCalendar(val)}
+          format="d-M-y h:mm a"
+          required
+          disableClock
+        />
         <button type="submit">Add Activity</button>
       </form>
       {groupActivity.map((item, index) => (
         <>
           <Card key={index}>
             <p>{item.title}</p>
-            <p>
-              {moment(item.realization_time).subtract(10, "days").calendar()}
-            </p>
+            <p>{moment(item.realization_time).calendar()}</p>
             <p>{moment(item.realization_time).format("LT")}</p>
             <AiOutlineCloseCircle onClick={() => deleteActivity(item.id)} />
+
             <button
               onClick={() => {
                 setIsShow(true);

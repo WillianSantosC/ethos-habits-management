@@ -38,6 +38,7 @@ const InputEditActivity = ({ setIsShow, id }) => {
         value={newTitle}
         onChange={(e) => setNewTitle(e.target.value)}
       ></input>
+
       <button onClick={() => EditActivity(id, newTitle)}>Save</button>
     </div>
   );

@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CreateGroup from "../../components/CreateGroup";
 import GroupCard from "../../components/GroupCard";
 import SubGroupsCard from "../../components/SubGroupsCard";
 import { GroupContext } from "../../providers/Group";
+import api from "../../services/api";
 
 function Groups() {
+  const [text, setText] = useState("");
+  const [filtered, setFiltered] = useState([]);
+
   const {
     myGroups,
     groups,
@@ -13,6 +17,14 @@ function Groups() {
     nextPage,
     previousPage,
   } = useContext(GroupContext);
+
+  const handleFilter = (text) => {
+    if (text) {
+      api
+        .get(`/groups/?category=${text}`)
+        .then((res) => setFiltered(res.data.results));
+    }
+  };
 
   return (
     <div>
@@ -27,6 +39,24 @@ function Groups() {
       </ul>
 
       <ul>
+        <p>Filtrar grupo</p>
+
+        <input
+          type="text"
+          value={text}
+          placeholder="Educação, saúde,..."
+          onChange={(e) => setText(e.target.value)}
+        />
+        <button onClick={() => handleFilter(text)}>Pesquisar</button>
+
+        {filtered &&
+          filtered.map((item) => (
+            <SubGroupsCard
+              group={item}
+              key={item.id}
+              subscribeUser={subscribeUser}
+            />
+          ))}
         {groups.map((item) => (
           <SubGroupsCard
             group={item}
