@@ -24,7 +24,7 @@ export const Container = styled.div`
     background-color: #46454e;
     color: white;
   }
-  
+
   .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #46454e;
   }
@@ -84,7 +84,7 @@ export const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 2px groove darkorchid;
+      border: 2px groove #ec008c;
       border-right: none;
       border-radius: 5px 0 0 5px;
       background-color: #1d1b24;

@@ -1,21 +1,25 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { GoalsContext } from "../../providers/Goal";
+import { Card, CardText, CardTitle, DataComponent } from "../HabitsCard/style";
+import { AiOutlineLogout } from "react-icons/ai";
+import { FiMoreHorizontal } from "react-icons/fi";
+import { BiCategory } from "react-icons/bi";
 
-const GroupCard = ({
-  group: { id, name, description, category },
-  unsubscribeGroup,
-}) => {
+const GroupCard = ({ group: { id, name, category }, unsubscribeGroup }) => {
   return (
-    <li>
-      <Link to={`/subscriptions/${id}`}>
-        <h3>{name}</h3>
-      </Link>
-      <p>{description}</p>
-      <p>{category}</p>
-      <span>{id}</span>
-      <button onClick={() => unsubscribeGroup(id)}>Unsubscribe</button>
-    </li>
+    <Card>
+      <DataComponent>
+        <p> </p>
+        <Link to={`/subscriptions/${id}`}>
+          <FiMoreHorizontal />
+        </Link>
+        <CardTitle>{name}</CardTitle>
+        <AiOutlineLogout onClick={() => unsubscribeGroup(id)}></AiOutlineLogout>
+      </DataComponent>
+      <DataComponent>
+        <BiCategory />
+        <CardText>{category}</CardText>
+      </DataComponent>
+    </Card>
   );
 };
 

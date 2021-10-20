@@ -7,7 +7,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Grid, TextField, Button, Container } from "@material-ui/core";
 import api from "../../services/api";
 import HabitsCard from "../../components/HabitsCard";
-import { CardContainer } from "./style";
+import { HabitsContainer } from "./style";
+import { PageContainer, List, Title } from "../Groups/style";
+import Menu from "../../components/Menu";
 
 function Habits() {
   const { getHabits, myHabits } = useContext(HabitsContext);
@@ -56,70 +58,74 @@ function Habits() {
   }, [myHabits, getHabits]);
 
   return (
-    <div>
-      <h1>Habits</h1>
-      <button onClick={getHabits}>click</button>
-      <Container maxWidth="xs">
-        <Grid container>
-          <Grid className="grid">
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit(handleData)}>
-              <TextField
-                size="small"
-                margin="none"
-                label="Title"
-                placeholder="Title"
-                variant="outlined"
-                error={!!errors.title}
-                helperText={errors.title?.message}
-                {...register("title")}
-              />
+    <PageContainer>
+      <Menu />
+      <HabitsContainer>
+        <Title>Habits</Title>
+        {/* <button onClick={getHabits}>click</button> */}
+        <Container maxWidth="xs">
+          <Grid container>
+            <Grid className="grid">
+              <Title>Add a new Habit</Title>
+              <form onSubmit={handleSubmit(handleData)}>
+                <TextField
+                  size="small"
+                  margin="none"
+                  label="Title"
+                  placeholder="Title"
+                  variant="outlined"
+                  error={!!errors.title}
+                  helperText={errors.title?.message}
+                  {...register("title")}
+                />
 
-              <TextField
-                size="small"
-                label="Category"
-                placeholder="Category"
-                variant="outlined"
-                margin="none"
-                error={!!errors.category}
-                helperText={errors.category?.message}
-                {...register("category")}
-              />
+                <TextField
+                  size="small"
+                  label="Category"
+                  placeholder="Category"
+                  variant="outlined"
+                  margin="none"
+                  error={!!errors.category}
+                  helperText={errors.category?.message}
+                  {...register("category")}
+                />
 
-              <TextField
-                size="small"
-                label="Difficulty"
-                placeholder="Difficulty"
-                variant="outlined"
-                margin="none"
-                error={!!errors.difficulty}
-                helperText={errors.difficulty?.message}
-                {...register("difficulty")}
-              />
+                <TextField
+                  size="small"
+                  label="Difficulty"
+                  placeholder="Difficulty"
+                  variant="outlined"
+                  margin="none"
+                  error={!!errors.difficulty}
+                  helperText={errors.difficulty?.message}
+                  {...register("difficulty")}
+                />
 
-              <TextField
-                size="small"
-                label="Frequency"
-                placeholder="Frequency"
-                variant="outlined"
-                margin="none"
-                error={!!errors.frequency}
-                helperText={errors.frequency?.message}
-                {...register("frequency")}
-              />
-              <Button color="primary" variant="contained" type="submit">
-                Enviar
-              </Button>
-            </form>
+                <TextField
+                  size="small"
+                  label="Frequency"
+                  placeholder="Frequency"
+                  variant="outlined"
+                  margin="none"
+                  error={!!errors.frequency}
+                  helperText={errors.frequency?.message}
+                  {...register("frequency")}
+                />
+                <Button color="primary" variant="contained" type="submit">
+                  add
+                </Button>
+              </form>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-      <CardContainer>
-        {myHabits.map((item) => (
-          <HabitsCard habits={item} key={item.id} />
-        ))}
-      </CardContainer>
-    </div>
+        </Container>
+        <Title>Meus Hábitos</Title>
+        <List>
+          {myHabits.map((item) => (
+            <HabitsCard habits={item} key={item.id} />
+          ))}
+        </List>
+      </HabitsContainer>
+    </PageContainer>
   );
 }
 

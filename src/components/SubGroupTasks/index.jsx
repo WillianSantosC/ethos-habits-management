@@ -1,15 +1,16 @@
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { GoalsContext } from "../../providers/Goal";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { AiOutlineCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
+import { TiEdit } from "react-icons/ti";
 import { AccessContext } from "../../providers/Access";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField } from "@material-ui/core";
-import { Card } from "./style";
 import api from "../../services/api";
 import ActivityForm from "../ActivityForm";
+import { Card, CardText, CardTitle, SideComponent } from "../HabitsCard/style";
 
 function SubGroupTasks() {
   const { id } = useParams();
@@ -91,14 +92,17 @@ function SubGroupTasks() {
       </form>
       {groupGoals.map((item, index) => (
         <Card key={index}>
-          <p>{item.title}</p>
-          <p>{item.difficulty}</p>
-          <p>{item.how_much_achieved}</p>
-          <p>{item.achieved ? "completo" : "incompleto"}</p>
-          <button onClick={() => handleEditGoal(item.id, item.achieved)}>
-            Editar
-          </button>
-          <AiOutlineCloseCircle onClick={() => deleteGoal(item.id)} />
+          <SideComponent>
+            <AiOutlineCheckCircle
+              onClick={() => handleEditGoal(item.id, item.achieved)}
+            ></AiOutlineCheckCircle>
+            <CardTitle>{item.title}</CardTitle>
+            <AiOutlineCloseCircle onClick={() => deleteGoal(item.id)} />
+          </SideComponent>
+
+          <CardText>{item.difficulty}</CardText>
+
+          <CardTitle>{item.achieved ? "completo" : "incompleto"}</CardTitle>
         </Card>
       ))}
       <ActivityForm></ActivityForm>

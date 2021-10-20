@@ -8,9 +8,9 @@ export const AccessProvider = ({ children }) => {
   const [token] = useState(
     JSON.parse(localStorage.getItem("@ethos:access")) || ""
   );
-  const [parse, setParse] =
-    useState();
-    // jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
+  const [parse, setParse] = useState(
+    jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
+  );
 
   const addToLocalStorage = (data) => {
     localStorage.setItem("@ethos:access", JSON.stringify(data));
