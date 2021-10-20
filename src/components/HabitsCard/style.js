@@ -7,7 +7,7 @@ export const Card = styled.div`
   flex-direction: column;
   background: var(--boxes);
   gap: 5px;
-  width: 30%;
+  width: 25%;
   min-height: 125px;
   border-radius: 6px;
   border: 1px solid var(--background);
@@ -35,7 +35,7 @@ export const CardText = styled.p`
 
 export const CardTitle = styled(CardText)`
   font-weight: bold;
-  width: 90%;
+  width: 95%;
   text-align: center;
 `;
 
@@ -47,7 +47,8 @@ export const SideComponent = styled.div`
 `;
 
 export const DataComponent = styled(SideComponent)`
-  justify-content: flex-end;
+  justify-content: center;
+  padding: 1%;
 `;
 
 export const PinComponent = styled(SideComponent)`
