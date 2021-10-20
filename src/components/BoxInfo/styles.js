@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DataContainer = styled.div`
+export const DataContainer = styled.div `
   display: flex;
   align-items: center;
 
@@ -16,14 +16,21 @@ export const DataContainer = styled.div`
       height: 200px;
       color: var(--background);
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
       margin: 5%;
       flex-shrink: 0;
       flex-grow: 0;
       flex-basis: 40%;
       min-width: 150px;
+
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
       .boxTitle {
         font-weight: 700;
@@ -39,20 +46,25 @@ export const DataContainer = styled.div`
         color: var(--details);
         margin-bottom: 20px;
       }
-    }
+    } 
+  }
+  @media (min-width: 1024px) {
+    width: 100%;
+    justify-content: space-evenly;
+    ul {
+      width: 100%;
+      li {
+        div{
+          align-items: flex-start
+        }
+        .boxTitle {
+        }
+        img {
+          display: block;
+          width: 50px;
+        }
 
-    @media (min-width: 1024px) {
-      ul {
-        li {
-          .boxTitle {
-          }
-          img {
-            display: block;
-            width: 50px;
-          }
-
-          .boxNumber {
-          }
+        .boxNumber {
         }
       }
     }
