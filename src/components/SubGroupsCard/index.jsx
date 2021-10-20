@@ -11,7 +11,6 @@ const SubGroupsCard = ({ group: { id, name, category }, subscribeUser }) => {
         </AiOutlineUsergroupAdd>
         <CardTitle>{name}</CardTitle>
       </DataComponent>
-
       <DataComponent>
         <BiCategory />
         <CardText>{category}</CardText>

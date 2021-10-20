@@ -7,3 +7,11 @@ export const CardContainer = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
+
+export const HabitsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  padding: 1%;
+  flex-direction: column;
+`;

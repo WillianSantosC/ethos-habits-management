@@ -18,7 +18,6 @@ function HabitsCard({
         <CardTitle>{title}</CardTitle>
         <AiOutlineCloseCircle onClick={() => removeHabits(id)} />
       </SideComponent>
-
       <CardText>{category}</CardText>
       <SideComponent>
         <CardText>
