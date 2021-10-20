@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CreateGroup from "../../components/CreateGroup";
 import GroupCard from "../../components/GroupCard";
 import SubGroupsCard from "../../components/SubGroupsCard";
@@ -16,6 +16,8 @@ function Groups() {
     unsubscribeGroup,
     nextPage,
     previousPage,
+    getUserGroups,
+    allGroups,
   } = useContext(GroupContext);
 
   const handleFilter = (text) => {
@@ -25,6 +27,10 @@ function Groups() {
         .then((res) => setFiltered(res.data.results));
     }
   };
+  useEffect(() => {
+    getUserGroups();
+    allGroups();
+  }, [groups, myGroups, getUserGroups, allGroups]);
 
   return (
     <div>
