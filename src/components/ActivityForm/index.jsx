@@ -9,10 +9,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
 import { TextField } from "@material-ui/core";
-import { Card } from "../SubGroupTasks/style";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { AiOutlineCloseCircle, AiOutlineClockCircle } from "react-icons/ai";
+import { TiEdit } from "react-icons/ti";
+import { FiMapPin } from "react-icons/fi";
+
 import InputEditActivity from "../InputEditActivity";
 import DateTimePicker from "react-datetime-picker";
+import {
+  Card,
+  CardText,
+  CardTitle,
+  DataComponent,
+  PinComponent,
+  SideComponent,
+} from "../HabitsCard/style";
 
 const ActivityForm = () => {
   const { id } = useParams();
@@ -22,10 +32,6 @@ const ActivityForm = () => {
   const [calendar, setCalendar] = useState(new Date());
 
   const [isShow, setIsShow] = useState(false);
-
-  // function CallEditComponent() {
-  //   setIsShow(true);
-  // }
 
   const schema = yup.object().shape({
     titleActivity: yup.string().required("Required Field"),
@@ -88,23 +94,32 @@ const ActivityForm = () => {
         <button type="submit">Add Activity</button>
       </form>
       {groupActivity.map((item, index) => (
-        <>
-          <Card key={index}>
-            <p>{item.title}</p>
-            <p>{moment(item.realization_time).calendar()}</p>
-            <p>{moment(item.realization_time).format("LT")}</p>
-            <AiOutlineCloseCircle onClick={() => deleteActivity(item.id)} />
-
-            <button
+        <Card key={index}>
+          <SideComponent>
+            <TiEdit
               onClick={() => {
                 setIsShow(true);
               }}
             >
               Edit Activity
-            </button>
+            </TiEdit>
             {isShow && <InputEditActivity setIsShow={setIsShow} id={item.id} />}
-          </Card>
-        </>
+            <CardTitle>{item.title}</CardTitle>
+            <AiOutlineCloseCircle onClick={() => deleteActivity(item.id)} />
+          </SideComponent>
+          <DataComponent>
+            <PinComponent>
+              <FiMapPin id={"PinIcon"} />
+              <CardText>{moment(item.realization_time).calendar()}</CardText>
+            </PinComponent>
+            <PinComponent>
+              <AiOutlineClockCircle id={"PinIcon"} />
+              <CardText>
+                {moment(item.realization_time).format("LT")}hr
+              </CardText>
+            </PinComponent>
+          </DataComponent>
+        </Card>
       ))}
     </>
   );

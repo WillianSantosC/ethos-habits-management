@@ -5,13 +5,54 @@ export const Card = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: red;
-  gap: 10px;
-  width: 200px;
-  height: 200px;
+  background: var(--boxes);
+  gap: 5px;
+  width: 30%;
+  min-height: 125px;
+  border-radius: 6px;
+  border: 1px solid var(--background);
+  margin: 1% 0;
 
   svg {
     cursor: pointer;
     font-size: 30px;
+    color: var(--background);
   }
+
+  #PinIcon {
+    font-size: 20px;
+  }
+`;
+
+export const CardText = styled.p`
+  color: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+`;
+
+export const CardTitle = styled(CardText)`
+  font-weight: bold;
+  width: 90%;
+  text-align: center;
+`;
+
+export const SideComponent = styled.div`
+  width: 95%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const DataComponent = styled(SideComponent)`
+  justify-content: flex-end;
+`;
+
+export const PinComponent = styled(SideComponent)`
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 65%;
 `;
