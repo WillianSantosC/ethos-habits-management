@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { ActivityContext } from "../../providers/Activity";
 import * as moment from "moment";
@@ -37,7 +37,9 @@ const ActivityForm = () => {
     resolver: yupResolver(schema),
   });
 
-  getGroupActivity(id);
+  useEffect(() => {
+    getGroupActivity(id);
+  }, [id]);
 
   function onSubmitActivity({ titleActivity }) {
     const data = {

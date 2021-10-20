@@ -4,6 +4,7 @@ import goalIcon from "../../assets/img/goal.png";
 import activityIcon from "../../assets/img/note-book.png";
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
+import { DataContainer } from "./styles";
 
 const BoxInfo = () => {
   //Pegar os dados do usuários e substituir no Objeto
@@ -18,17 +19,17 @@ const BoxInfo = () => {
   ];
 
   return (
-    <div>
+    <DataContainer>
       <ul>
         {dataCard.map((item, index) => (
           <li key={index}>
-            <p>{item.name}</p>
+            <span className="boxTitle">{item.name}</span>
             <img src={item.icon} alt={item.name}></img>
-            <p>{item.quantity}</p>
+            <span className="boxNumber">{item.quantity}</span>
           </li>
         ))}
       </ul>
-    </div>
+    </DataContainer>
   );
 };
 
