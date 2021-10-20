@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import api from "../../services/api";
 
 export const HabitsContext = createContext([]);
@@ -9,7 +9,7 @@ export const HabitsProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("@ethos:access")) || ""
   );
 
-  function getHabits() {
+  const getHabits = useCallback(() => {
     api
       .get("/habits/personal/", {
         headers: {
@@ -18,11 +18,13 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((res) => setMyHabits(res.data))
       .catch((err) => console.log(err));
-  }
+  }, [setMyHabits, token]);
 
   useEffect(() => {
-    getHabits();
-  }, [myHabits]);
+    if (myHabits.length === 0) {
+      getHabits();
+    }
+  }, [myHabits.length, getHabits]);
 
   function removeHabits(id) {
     api

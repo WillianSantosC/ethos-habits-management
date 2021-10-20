@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { HabitsContext } from "../../providers/Habits";
 import { AccessContext } from "../../providers/Access";
 import * as yup from "yup";
@@ -51,7 +51,9 @@ function Habits() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
-  console.log(parse);
+  useEffect(() => {
+    getHabits();
+  }, [myHabits, getHabits]);
 
   return (
     <div>

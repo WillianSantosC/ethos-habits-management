@@ -1,4 +1,10 @@
-import { createContext, useEffect, useState, useContext } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+} from "react";
 import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
 
@@ -11,7 +17,7 @@ export const GroupProvider = ({ children }) => {
   const [myGroups, setMyGroups] = useState([]);
   const [groups, setGroups] = useState([]);
 
-  function getUserGroups() {
+  const getUserGroups = useCallback(() => {
     api
       .get("/groups/subscriptions/", {
         headers: {
@@ -21,18 +27,17 @@ export const GroupProvider = ({ children }) => {
       .then((res) => setMyGroups(res.data))
 
       .catch((err) => console.log(err));
-  }
+  }, [token]);
 
-  function allGroups() {
+  const allGroups = useCallback(() => {
     api
       .get(`/groups/?page=${page}`)
       .then((res) => {
         setGroups(res.data.results);
         setAllGroupsCount(res.data.count);
       })
-
       .catch((err) => console.log(err));
-  }
+  }, [page]);
 
   function subscribeUser(id) {
     console.log(token);
@@ -70,13 +75,18 @@ export const GroupProvider = ({ children }) => {
       setPage(page - 1);
     }
   }
-  useEffect(() => {
-    getUserGroups();
-  }, [myGroups]);
 
   useEffect(() => {
-    allGroups();
-  }, [groups]);
+    if (myGroups.length === 0) {
+      getUserGroups();
+    }
+  }, [myGroups, getUserGroups]);
+
+  useEffect(() => {
+    if (groups.length === 0) {
+      allGroups();
+    }
+  }, [allGroups, groups.length]);
 
   return (
     <GroupContext.Provider
