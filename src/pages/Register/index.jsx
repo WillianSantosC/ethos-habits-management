@@ -84,8 +84,8 @@ function Register() {
                 margin="none"
                 label="Nome"
                 fullWidth
-                focused
-                variant="outlined"
+                size="small"
+                variant="filled"
                 placeholder="Digite seu nome"
                 error={!!errors.username}
                 helperText={errors.username?.message}
@@ -95,10 +95,10 @@ function Register() {
               <TextField
                 label="E-mail"
                 fullWidth
+                size="small"
                 placeholder="Digite seu email"
                 margin="none"
-                focused
-                variant="outlined"
+                variant="filled"
                 error={!!errors.email}
                 helperText={errors.email?.message}
                 {...register("email")}
@@ -107,11 +107,11 @@ function Register() {
               <TextField
                 type={showPassword ? "text" : "password"}
                 label="Senha"
+                size="small"
                 placeholder="Digite sua senha"
                 margin="none"
                 fullWidth
-                focused
-                variant="outlined"
+                variant="filled"
                 error={!!errors.password}
                 helperText={errors.password?.message}
                 {...register("password")}
@@ -137,8 +137,8 @@ function Register() {
                 label="Confirme a sua senha"
                 placeholder="Confirme a sua senha"
                 fullWidth
-                focused
-                variant="outlined"
+                variant="filled"
+                size="small"
                 margin="none"
                 error={!!errors.confirmPassword}
                 helperText={errors.confirmPassword?.message}
@@ -165,24 +165,23 @@ function Register() {
 
               <div id="label">
                 <div></div>
-                <p>OR</p>
+                <p>ou</p>
                 <div></div>
               </div>
 
-              <Button onClick={() => history.push("/")}>Login</Button>
+              <Button onClick={() => history.push("/")}>Entrar</Button>
             </form>
           </div>
 
           <Animation>
             <h1>
-              Bem vindo ao ethos
-              <span>_</span>
+              Bem vindo ao <span>ethos_</span>
             </h1>
 
-            <h3>
+            <p>
               Uma plataforma para melhorar seus hábitos e organizar o seu estilo
               de vida.
-            </h3>
+            </p>
             <Lottie
               options={defaultOptions}
               height={300}
@@ -192,7 +191,7 @@ function Register() {
               isPaused={animationState.isPaused}
             />
 
-            <h4>Mude o seu estilo de vida</h4>
+            <p>Seja o protagonista da sua mudança</p>
           </Animation>
         </Container>
       </div>
