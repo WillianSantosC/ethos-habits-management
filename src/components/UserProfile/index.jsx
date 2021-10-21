@@ -42,7 +42,11 @@ function UserProfile() {
         <div className="email">
           <span>{userInfo.email}</span>
         </div>
-        <img src={LogOff} alt="LogOff" className="mobileLogOff" />
+        <img src={LogOff} alt="LogOff" className="mobileLogOff" onClick = {() => {
+          localStorage.clear()
+          setAuthenticated(false)
+          history.push('/')
+        }} />
       </div>
     </UserContainer>
   );
