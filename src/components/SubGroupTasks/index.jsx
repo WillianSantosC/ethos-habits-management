@@ -8,9 +8,11 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField } from "@material-ui/core";
+import Button from "../../components/Button";
 import api from "../../services/api";
 import ActivityForm from "../ActivityForm";
 import { Card, CardText, CardTitle, SideComponent } from "../HabitsCard/style";
+import { Container } from "./style";
 
 function SubGroupTasks() {
   const { id } = useParams();
@@ -63,33 +65,39 @@ function SubGroupTasks() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="formInputs">
-        <h1>Add goal</h1>
+      <Container>
+        <form onSubmit={handleSubmit(onSubmit)} className="formInputs">
+          <h1>Adicione um Objetivo</h1>
 
-        <TextField
-          size="small"
-          margin="none"
-          type="text"
-          variant="outlined"
-          error={!!errors.title}
-          helperText={errors.title?.message}
-          placeholder="title"
-          {...register("title")}
-        />
+          <TextField
+            size="small"
+            label="Título"
+            margin="none"
+            fullWidth
+            type="text"
+            variant="outlined"
+            error={!!errors.title}
+            helperText={errors.title?.message}
+            placeholder="Título"
+            {...register("title")}
+          />
 
-        <TextField
-          placeholder="Difficulty"
-          size="small"
-          type="text"
-          variant="outlined"
-          margin="none"
-          error={!!errors.difficulty}
-          helperText={errors.difficulty?.message}
-          {...register("difficulty")}
-        />
+          <TextField
+            label="Dificuldade"
+            placeholder="Dificuldade"
+            size="small"
+            type="text"
+            fullWidth
+            variant="outlined"
+            margin="none"
+            error={!!errors.difficulty}
+            helperText={errors.difficulty?.message}
+            {...register("difficulty")}
+          />
 
-        <button type="submit">Add Goal</button>
-      </form>
+          <Button type="submit">Adicionar</Button>
+        </form>
+      </Container>
       {groupGoals.map((item, index) => (
         <Card key={index}>
           <SideComponent>
@@ -102,7 +110,7 @@ function SubGroupTasks() {
 
           <CardText>{item.difficulty}</CardText>
 
-          <CardTitle>{item.achieved ? "completo" : "incompleto"}</CardTitle>
+          <CardTitle>{item.achieved ? "Completo" : "Incompleto"}</CardTitle>
         </Card>
       ))}
       <ActivityForm></ActivityForm>

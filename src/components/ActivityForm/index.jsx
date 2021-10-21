@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { ActivityContext } from "../../providers/Activity";
 import * as moment from "moment";
@@ -12,6 +12,7 @@ import { TextField } from "@material-ui/core";
 import { AiOutlineCloseCircle, AiOutlineClockCircle } from "react-icons/ai";
 import { TiEdit } from "react-icons/ti";
 import { FiMapPin } from "react-icons/fi";
+import Button from "../../components/Button";
 
 import InputEditActivity from "../InputEditActivity";
 import DateTimePicker from "react-datetime-picker";
@@ -23,6 +24,7 @@ import {
   PinComponent,
   SideComponent,
 } from "../HabitsCard/style";
+import { Container } from "./style";
 
 const ActivityForm = () => {
   const { id } = useParams();
@@ -34,7 +36,9 @@ const ActivityForm = () => {
   const [isShow, setIsShow] = useState(false);
 
   const schema = yup.object().shape({
-    titleActivity: yup.string().required("Required Field"),
+    titleActivity: yup.string().required("Campo Obrigatório"),
+    date: yup.string().required("Campo Obrigatório"),
+    time: yup.string().required("Campo Obrigatório"),
   });
 
   const {
@@ -45,12 +49,14 @@ const ActivityForm = () => {
     resolver: yupResolver(schema),
   });
 
-  getGroupActivity(id);
+  useEffect(() => {
+    getGroupActivity(id);
+  }, [groupActivity]);
 
-  function onSubmitActivity({ titleActivity }) {
+  function onSubmitActivity({ titleActivity, date, time }) {
     const data = {
       title: titleActivity,
-      realization_time: calendar,
+      realization_time: `${date}T${time}:00Z`,
       group: id,
     };
     api
@@ -68,29 +74,57 @@ const ActivityForm = () => {
   }
   return (
     <>
-      <h1>Activities</h1>
-      <form onSubmit={handleSubmit(onSubmitActivity)} className="formInputs">
-        <h2>Add Activity</h2>
+      <h1>Atividades</h1>
+      <Container>
+        <form onSubmit={handleSubmit(onSubmitActivity)} className="formInputs">
+          <h2>Adicione uma atividade</h2>
 
-        <TextField
-          size="small"
-          margin="none"
-          type="text"
-          variant="outlined"
-          error={!!errors.titleActivity}
-          helperText={errors.titleActivity?.message}
-          placeholder="title"
-          {...register("titleActivity")}
-        />
-        <DateTimePicker
-          value={calendar}
-          onChange={(val) => setCalendar(val)}
-          format="d-M-y h:mm a"
-          required
-          disableClock
-        />
-        <button type="submit">Add Activity</button>
-      </form>
+          <TextField
+            size="small"
+            margin="none"
+            type="text"
+            fullWidth
+            variant="outlined"
+            error={!!errors.titleActivity}
+            helperText={errors.titleActivity?.message}
+            placeholder="Título"
+            {...register("titleActivity")}
+          />
+
+          <TextField
+            size="small"
+            margin="none"
+            type="time"
+            fullWidth
+            variant="outlined"
+            error={!!errors.time}
+            helperText={errors.time?.message}
+            placeholder="Título"
+            {...register("time")}
+          />
+
+          <TextField
+            size="small"
+            margin="none"
+            type="date"
+            fullWidth
+            variant="outlined"
+            error={!!errors.date}
+            helperText={errors.date?.message}
+            placeholder="Título"
+            {...register("date")}
+          />
+          {/* <DateTimePicker
+            value={calendar}
+            onChange={(val) => setCalendar(val)}
+            format="d-M-y h:mm a"
+            required
+            disableClock
+            id="date"
+          /> */}
+          <Button type="submit">Adicionar </Button>
+        </form>
+      </Container>
       {groupActivity.map((item, index) => (
         <Card key={index}>
           <SideComponent>

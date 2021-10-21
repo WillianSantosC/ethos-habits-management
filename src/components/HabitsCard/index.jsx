@@ -21,13 +21,13 @@ function HabitsCard({
       <CardText>{category}</CardText>
       <SideComponent>
         <CardText>
-          <CardTitle>Difficulty</CardTitle> {difficulty}
+          <CardTitle>Dificuldade</CardTitle> {difficulty}
         </CardText>
         <CardText>
-          <CardTitle>Frequency</CardTitle> {frequency}
+          <CardTitle>Frequência</CardTitle> {frequency}
         </CardText>
       </SideComponent>
-      <CardText>Status :{how_much_achieved} dias</CardText>
+      <CardText>Status: {how_much_achieved} dias</CardText>
     </Card>
   );
 }

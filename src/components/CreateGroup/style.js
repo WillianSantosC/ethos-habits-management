@@ -1,12 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: var(--input-background);
-  padding: 15px;
-  border-radius: 8px;
-  width: 80%;
   margin: auto;
-  text-align: center;
+  background: var(--input-background);
+  padding: 10px;
+  border-radius: 8px;
 
   .MuiOutlinedInput-root {
     background: var(--boxes);
@@ -16,7 +14,7 @@ export const Container = styled.div`
     color: #ffffffe6;
   }
   .MuiInputBase-input {
-    color: black;
+    color: white;
   }
 
   .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
@@ -29,28 +27,15 @@ export const Container = styled.div`
   }
 
   form {
+    margin-top: 10px;
     display: flex;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
 
     button {
       width: 60%;
     }
-  }
-
-  @media (min-width: 1024px) {
-    width: 25%;
-  }
-`;
-
-export const Card = styled.div`
-  background: gray;
-  margin-bottom: 10px;
-
-  svg {
-    font-size: 18px;
-    cursor: pointer;
   }
 `;

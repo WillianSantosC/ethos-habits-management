@@ -3,6 +3,8 @@ import CreateGroup from "../../components/CreateGroup";
 import GroupCard from "../../components/GroupCard";
 import SubGroupsCard from "../../components/SubGroupsCard";
 import { GroupContext } from "../../providers/Group";
+import { TextField } from "@material-ui/core";
+import Button from "../../components/Button";
 import Menu from "../../components/Menu";
 
 import api from "../../services/api";
@@ -11,6 +13,7 @@ import {
   GroupContainer,
   List,
   PageContainer,
+  Search,
   Title,
 } from "./style";
 
@@ -49,7 +52,7 @@ function Groups() {
         <CreateGroup />
 
         <DisplayCards>
-          <Title>My Groups</Title>
+          <Title>Meus grupos</Title>
           <List>
             {myGroups.map((item) => (
               <GroupCard
@@ -63,17 +66,23 @@ function Groups() {
 
         <ul>
           <div>
-            <p>Filtrar grupo</p>
-
-            <input
-              type="text"
-              value={text}
-              placeholder="Educação, saúde,..."
-              onChange={(e) => setText(e.target.value)}
-            />
-            <button onClick={() => handleFilter(text)}>Pesquisar</button>
+            <h3>Filtrar grupo</h3>
+            <Search>
+              <TextField
+                size="small"
+                margin="none"
+                placeholder="Educação, saúde, ..."
+                variant="outlined"
+                fullWidth
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <Button pinkSchema onClick={() => handleFilter(text)}>
+                Pesquisar
+              </Button>
+            </Search>
           </div>
-          <Title>Filtered Groups</Title>
+          <Title>Grupos Filtrados</Title>
           <List>
             {filtered.length > 1 ? (
               filtered.map((item) => (
@@ -90,7 +99,7 @@ function Groups() {
               </p>
             )}
           </List>
-          <Title>All Groups</Title>
+          <Title>Todos os Grupos</Title>
 
           <List>
             {groups.map((item) => (
@@ -102,10 +111,10 @@ function Groups() {
             ))}
           </List>
 
-          <div>
+          {/* <div>
             <button onClick={() => previousPage()}>Previous Page</button>
             <button onClick={() => nextPage()}>Next Page</button>
-          </div>
+          </div> */}
         </ul>
       </GroupContainer>
     </PageContainer>
