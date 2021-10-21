@@ -16,6 +16,8 @@ import animationData from "../../assets/animations/Login.json";
 import Button from "../../components/Button";
 import ImgManagement from "../../assets/img/management (1).png";
 import ImgHighFive from "../../assets/img/high-five.png";
+import Logo from "../../assets/img/logos/ethos-original.png";
+import LogoPink from "../../assets/img/logos/ethos-reddish.png";
 
 function Login() {
   const { addToLocalStorage, authenticated } = useContext(AccessContext);
@@ -77,7 +79,7 @@ function Login() {
       <div>
         <Container>
           <h2>
-            ethos<span>_</span>
+            <img src={LogoPink} alt="ethos" />
           </h2>
           <div id="form-container">
             <form onSubmit={handleSubmit(handleNewUser)}>
@@ -140,7 +142,7 @@ function Login() {
 
           <Animation>
             <h1>
-              Bem vindo ao <span>ethos_</span>
+              Bem vindo ao <img src={Logo} alt="ethos" />
             </h1>
 
             <Lottie

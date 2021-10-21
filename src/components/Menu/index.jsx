@@ -5,6 +5,7 @@ import { Li, MenuContainer } from "./styles";
 import DashboardIcon from "../../assets/img/organizer.png";
 import GroupsIcon from "../../assets/img/personal-data.png";
 import HabitsIcon from "../../assets/img/pen.png";
+import Logo from "../../assets/img/logos/ethos-original.png";
 
 function Menu() {
   const [dashboard, setDashboard] = useState(true);
@@ -14,7 +15,7 @@ function Menu() {
   return (
     <MenuContainer>
       <h3>
-        ethos<span>_</span>
+        <img src={Logo} alt="ethos" />
       </h3>
       <nav>
         <ul>

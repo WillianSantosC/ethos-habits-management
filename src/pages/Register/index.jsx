@@ -13,6 +13,8 @@ import { Animation, Container, MainContainer } from "./style";
 import Lottie from "react-lottie";
 import animationData from "../../assets/animations/Security.json";
 import { AccessContext } from "../../providers/Access";
+import Logo from "../../assets/img/logos/ethos-original.png";
+import LogoPink from "../../assets/img/logos/ethos-reddish.png";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -81,7 +83,7 @@ function Register() {
       <div>
         <Container>
           <h2>
-            ethos<span>_</span>
+            <img src={LogoPink} alt="ethos" />
           </h2>
           <div id="form-container">
             <form onSubmit={handleSubmit(handleData)}>
@@ -181,7 +183,7 @@ function Register() {
 
           <Animation>
             <h1>
-              Bem vindo ao <span>ethos_</span>
+              Bem vindo ao <img src={Logo} alt="ethos" />
             </h1>
 
             <p>
