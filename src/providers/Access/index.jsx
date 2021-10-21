@@ -9,9 +9,10 @@ export const AccessProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("@ethos:access")) || ""
   );
 
-  const [parse, setParse] =
-    useState();
-    // jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
+  // const [parse, setParse] = useState(
+  //   jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
+  // );
+  const parse = token ? jwtDecode(token) : "";
 
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -23,16 +24,22 @@ export const AccessProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("@ethos:access"));
+    // const token = JSON.parse(localStorage.getItem("@ethos:access"));
 
-    if (token) {
+    if (!!token) {
       return setAuthenticated(true);
     }
-  }, [authenticated]);
+  }, [token]);
 
   return (
     <AccessContext.Provider
-      value={{ addToLocalStorage, token, parse, authenticated }}
+      value={{
+        addToLocalStorage,
+        token,
+        parse,
+        authenticated,
+        setAuthenticated,
+      }}
     >
       {children}
     </AccessContext.Provider>
