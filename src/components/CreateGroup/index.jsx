@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 
 const CreateGroup = () => {
   const formSchema = yup.object().shape({
@@ -30,10 +31,12 @@ const CreateGroup = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        toast.success("Grupo criado");
+      })
       .catch((err) => {
-        console.log(data);
         console.log(err);
+        toast.error("Falha ao criar");
       });
   }
 

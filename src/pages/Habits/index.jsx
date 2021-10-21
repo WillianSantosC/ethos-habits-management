@@ -10,6 +10,7 @@ import HabitsCard from "../../components/HabitsCard";
 import { HabitsContainer } from "./style";
 import { PageContainer, List, Title } from "../Groups/style";
 import Menu from "../../components/Menu";
+import toast from "react-hot-toast";
 
 function Habits() {
   const { getHabits, myHabits } = useContext(HabitsContext);
@@ -50,8 +51,13 @@ function Habits() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Hábito criado");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Falha ao criar");
+      });
   }
   useEffect(() => {
     getHabits();

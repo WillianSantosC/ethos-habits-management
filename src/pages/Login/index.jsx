@@ -53,14 +53,14 @@ function Login() {
       .post("/sessions/", data)
       .then((response) => {
         const { access } = response.data;
-        toast.success("Login succesfully");
+        toast.success("Login realizado com sucesso");
         addToLocalStorage(access);
         addUsernameToLocal(data.username);
         return history.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Login unsuccessfully");
+        toast.error("Falha ao realizar Login");
       });
   };
 
