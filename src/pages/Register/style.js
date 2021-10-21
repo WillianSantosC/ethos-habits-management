@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -6,6 +6,17 @@ export const MainContainer = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
+`;
+const apear = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(-50px);
+
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
 `;
 
 export const Container = styled.div`
@@ -73,6 +84,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    animation: ${apear} 1s;
   }
 
   @media (min-width: 1024px) {

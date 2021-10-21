@@ -1,29 +1,29 @@
 import styled from "styled-components";
 
-export const MenuContainer = styled.div `
+
+
+export const MenuContainer = styled.div`
   width: 100vw;
   position: fixed;
   bottom: 0;
   display: flex;
-  background: #1B1A24;
+  background: #1b1a24;
   height: 100px;
   align-items: center;
 
-  h3{
+  h3 {
     display: none;
   }
 
   nav {
     width: 100%;
-    ul{
+    ul {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
     }
   }
-;
-
-  @media (min-width: 1024px){
+  @media (min-width: 1024px) {
     position: static;
     height: calc(100vh - 60px);
     width: 13%;
@@ -61,28 +61,27 @@ export const MenuContainer = styled.div `
   }
 `;
 
-export const Li = styled.li `
+export const Li = styled.li`
   margin-top: 5px;
   display: flex;
   align-items: center;
 
-  a{
+  a {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: ${(props) =>
-        props.highlighted ? "var(--font-color)" : "var(--font-transparent)"};
+      props.highlighted ? "var(--font-color)" : "var(--font-transparent)"};
 
-    .iconImage{
+    .iconImage {
       width: 45px;
       margin-bottom: 4px;
     }
   }
 
-
-  @media (min-width: 1024px){
+  @media (min-width: 1024px) {
     margin: 20px 0;
 
     a {
