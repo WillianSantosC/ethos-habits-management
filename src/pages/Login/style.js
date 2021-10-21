@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -8,11 +8,25 @@ export const MainContainer = styled.div`
   width: 100vw;
 `;
 
+const apear = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(-50px);
+
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  #form-container {
+  }
 
   .MuiOutlinedInput-input {
     color: #ffffffe6;
@@ -26,7 +40,6 @@ export const Container = styled.div`
   }
   .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #46454e;
-    
   }
 
   .MuiFormLabel-root.Mui-focused {
@@ -73,6 +86,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    animation: ${apear} 1s;
   }
 
   @media (min-width: 1024px) {

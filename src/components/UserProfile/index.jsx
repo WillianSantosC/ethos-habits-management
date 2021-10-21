@@ -1,22 +1,24 @@
 import { UserContainer } from "./styles";
 import LogOff from "../../assets/img/right-arrow.png";
 import { useHistory } from "react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import api from "../../services/api";
-import jwtDecode from "jwt-decode";
 import MobileLogOff from "../../assets/img/remove.png";
+import { AccessContext } from "../../providers/Access";
 
 function UserProfile() {
   const history = useHistory();
   const [userInfo, setUserInfo] = useState({});
-  const [decodedUser] = useState(
-    jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
-  );
+  const { parse } = useContext(AccessContext);
+  const { setAuthenticated } = useContext(AccessContext);
+
+  // const [decodedUser] = useState(
+  //   jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
+  // );
+  // const { setAuthenticated } = useContext(AccessContext);
 
   function getUserInfo() {
-    api
-      .get(`users/${decodedUser.user_id}/`)
-      .then((res) => setUserInfo(res.data));
+    api.get(`users/${parse.user_id}/`).then((res) => setUserInfo(res.data));
   }
 
   useEffect(() => {
@@ -35,9 +37,9 @@ function UserProfile() {
           <img
             src={LogOff}
             alt="LogOff"
-            srcset=""
             onClick={() => {
               localStorage.clear();
+              setAuthenticated(false);
               history.push("/");
             }}
           />
