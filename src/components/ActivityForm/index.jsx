@@ -13,7 +13,6 @@ import { AiOutlineCloseCircle, AiOutlineClockCircle } from "react-icons/ai";
 import { TiEdit } from "react-icons/ti";
 import { FiMapPin } from "react-icons/fi";
 import Button from "../../components/Button";
-
 import InputEditActivity from "../InputEditActivity";
 import DateTimePicker from "react-datetime-picker";
 import {
@@ -24,8 +23,10 @@ import {
   PinComponent,
   SideComponent,
 } from "../HabitsCard/style";
-import { Container } from "./style";
+import { ActivityContainer, Container } from "./style";
 import toast from "react-hot-toast";
+import { GoalsContainer } from "../SubGroupTasks/style";
+import { List, Title } from "../../pages/Groups/style";
 
 const ActivityForm = () => {
   const { id } = useParams();
@@ -74,10 +75,10 @@ const ActivityForm = () => {
       });
   }
   return (
-    <>
+    <ActivityContainer>
       <Container>
         <form onSubmit={handleSubmit(onSubmitActivity)} className="formInputs">
-          <h2>Adicione uma atividade</h2>
+          <Title>Adicione uma atividade</Title>
 
           <TextField
             size="small"
@@ -125,35 +126,42 @@ const ActivityForm = () => {
           <Button type="submit">Adicionar </Button>
         </form>
       </Container>
-      {groupActivity.map((item, index) => (
-        <Card key={index}>
-          <SideComponent>
-            <TiEdit
-              onClick={() => {
-                setIsShow(true);
-              }}
-            >
-              Edit Activity
-            </TiEdit>
-            {isShow && <InputEditActivity setIsShow={setIsShow} id={item.id} />}
-            <CardTitle>{item.title}</CardTitle>
-            <AiOutlineCloseCircle onClick={() => deleteActivity(item.id)} />
-          </SideComponent>
-          <DataComponent>
-            <PinComponent>
-              <FiMapPin id={"PinIcon"} />
-              <CardText>{moment(item.realization_time).calendar()}</CardText>
-            </PinComponent>
-            <PinComponent>
-              <AiOutlineClockCircle id={"PinIcon"} />
-              <CardText>
-                {moment(item.realization_time).format("LT")}hr
-              </CardText>
-            </PinComponent>
-          </DataComponent>
-        </Card>
-      ))}
-    </>
+
+      <Title>Atividades</Title>
+
+      <List>
+        {groupActivity.map((item, index) => (
+          <Card key={index}>
+            <SideComponent>
+              <TiEdit
+                onClick={() => {
+                  setIsShow(true);
+                }}
+              >
+                Edit Activity
+              </TiEdit>
+              {isShow && (
+                <InputEditActivity setIsShow={setIsShow} id={item.id} />
+              )}
+              <CardTitle>{item.title}</CardTitle>
+              <AiOutlineCloseCircle onClick={() => deleteActivity(item.id)} />
+            </SideComponent>
+            <DataComponent>
+              <PinComponent>
+                <FiMapPin id={"PinIcon"} />
+                <CardText>{moment(item.realization_time).calendar()}</CardText>
+              </PinComponent>
+              <PinComponent>
+                <AiOutlineClockCircle id={"PinIcon"} />
+                <CardText>
+                  {moment(item.realization_time).format("LT")}hr
+                </CardText>
+              </PinComponent>
+            </DataComponent>
+          </Card>
+        ))}
+      </List>
+    </ActivityContainer>
   );
 };
 

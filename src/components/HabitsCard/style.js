@@ -19,6 +19,11 @@ export const Card = styled.div`
     color: var(--background);
   }
 
+  svg:hover {
+    filter: brightness(0.9);
+    color: gray;
+  }
+
   #PinIcon {
     font-size: 20px;
   }
@@ -53,6 +58,18 @@ export const SideComponent = styled.div`
 export const DataComponent = styled(SideComponent)`
   justify-content: center;
   padding: 1%;
+
+  #more-button {
+    color: #8320d0;
+  }
+
+  #exit-button {
+    color: #c82717;
+  }
+
+  #sub-icon {
+    color: #147614;
+  }
 `;
 
 export const PinComponent = styled(SideComponent)`

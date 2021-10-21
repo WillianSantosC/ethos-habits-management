@@ -4,15 +4,18 @@ import goalIcon from "../../assets/img/goal.png";
 import activityIcon from "../../assets/img/note-book.png";
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
+import { GroupContext } from "../../providers/Group";
+
 import { DataContainer } from "./styles";
 
 const BoxInfo = () => {
   //Pegar os dados do usuários e substituir no Objeto
 
   const { myHabits } = useContext(HabitsContext);
+  const { myGroups } = useContext(GroupContext);
 
   const dataCard = [
-    { name: "Groups", icon: groupIcon, quantity: 3 },
+    { name: "Groups", icon: groupIcon, quantity: myGroups.length },
     { name: "Habits", icon: habitsIcon, quantity: myHabits.length },
     { name: "Activities", icon: activityIcon, quantity: 4 },
     { name: "Goals", icon: goalIcon, quantity: 1 },
