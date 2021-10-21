@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../../components/Button";
 
 export const Container = styled.div`
   background: var(--input-background);
@@ -53,5 +54,27 @@ export const Card = styled.div`
   svg {
     font-size: 18px;
     cursor: pointer;
+  }
+`;
+
+export const GoalsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 1%;
+  margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
+`;
+
+export const ButtonComponent = styled(Button)`
+  width: 100px;
+
+  a {
+    color: var(--font-color);
   }
 `;

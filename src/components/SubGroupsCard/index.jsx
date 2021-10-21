@@ -6,9 +6,11 @@ const SubGroupsCard = ({ group: { id, name, category }, subscribeUser }) => {
   return (
     <Card>
       <DataComponent>
-        <AiOutlineUsergroupAdd onClick={() => subscribeUser(id)}>
-          Subscribe
-        </AiOutlineUsergroupAdd>
+        <AiOutlineUsergroupAdd
+          onClick={() => subscribeUser(id)}
+          id="sub-icon"
+        />
+
         <CardTitle>{name}</CardTitle>
       </DataComponent>
       <DataComponent>
