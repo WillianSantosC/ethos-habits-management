@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { GoalsContainer } from "../SubGroupTasks/style";
 
 export const Container = styled.div`
   background: var(--input-background);
@@ -43,4 +44,8 @@ export const Container = styled.div`
   @media (min-width: 1024px) {
     width: 25%;
   }
+`;
+
+export const ActivityContainer = styled(GoalsContainer)`
+  margin: 20px 0;
 `;
