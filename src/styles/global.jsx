@@ -34,5 +34,31 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 
+    ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #B45EF7;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: transparent
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 
 `;

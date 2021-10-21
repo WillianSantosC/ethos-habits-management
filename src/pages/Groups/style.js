@@ -22,7 +22,13 @@ export const Search = styled.div`
 
   button {
     margin: 0;
-    width: 20%;
+    width: 40%;
+  }
+
+  @media (min-width: 1024px) {
+    button {
+      width: 20%;
+    }
   }
 `;
 
