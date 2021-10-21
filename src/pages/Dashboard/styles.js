@@ -1,21 +1,20 @@
 import styled from "styled-components";
 
-export const DashboardContainer = styled.div `
+export const DashboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 100px 0;
 
-  @media (min-width: 1024px){
+  @media (min-width: 1024px) {
     flex-direction: row;
     margin: 0;
   }
 `;
 
-export const BoxInfoContainer = styled.div `
+export const BoxInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
   height: 100vh;
 
   h1 {
@@ -26,16 +25,17 @@ export const BoxInfoContainer = styled.div `
   h2 {
     font-size: 2rem;
     margin-top: 5%;
-    font-weight: lighter;
   }
 
-  @media (min-width: 1024px){
+  @media (min-width: 1024px) {
     width: 90%;
-    h1{
+    overflow: auto;
+
+    h1 {
       padding-top: 2%;
       font-size: 2.5rem;
       width: 90%;
-      font-weight: lighter;
+      /* font-weight: lighter; */
     }
 
     h2 {
@@ -45,12 +45,12 @@ export const BoxInfoContainer = styled.div `
       font-weight: lighter;
       width: 90%;
 
-      &::before{
+      &::before {
         content: "Olá, ";
       }
-      &::after{
+      &::after {
         content: "!";
       }
     }
   }
-`
+`;
