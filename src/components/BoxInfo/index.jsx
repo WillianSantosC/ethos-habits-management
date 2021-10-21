@@ -7,8 +7,6 @@ import { HabitsContext } from "../../providers/Habits";
 import { DataContainer } from "./styles";
 
 const BoxInfo = () => {
-  //Pegar os dados do usuários e substituir no Objeto
-
   const { myHabits } = useContext(HabitsContext);
   const funFacts = [
     "Sua vida é em grande parte a soma de todos seus hábitos - bons ou ruins.",

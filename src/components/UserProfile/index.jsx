@@ -12,11 +12,6 @@ function UserProfile() {
   const { parse } = useContext(AccessContext);
   const { setAuthenticated } = useContext(AccessContext);
 
-  // const [decodedUser] = useState(
-  //   jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
-  // );
-  // const { setAuthenticated } = useContext(AccessContext);
-
   function getUserInfo() {
     api.get(`users/${parse.user_id}/`).then((res) => setUserInfo(res.data));
   }

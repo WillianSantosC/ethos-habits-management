@@ -58,7 +58,6 @@ export const GroupProvider = ({ children }) => {
   }
 
   function unsubscribeGroup(id) {
-    // if (token) {
     console.log(token);
     api
       .delete(`/groups/${id}/unsubscribe/`, {
@@ -86,10 +85,6 @@ export const GroupProvider = ({ children }) => {
       setPage(page - 1);
     }
   }
-
-  // useEffect(() => {
-  //   getUserGroups();
-  // }, [getUserGroups]);
 
   useEffect(() => {
     if (groups.length === 0) {
