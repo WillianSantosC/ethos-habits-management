@@ -35,7 +35,6 @@ function UserProfile() {
           <img
             src={LogOff}
             alt="LogOff"
-            srcset=""
             onClick={() => {
               localStorage.clear();
               history.push("/");

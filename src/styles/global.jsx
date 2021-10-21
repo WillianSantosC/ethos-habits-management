@@ -50,7 +50,7 @@ export default createGlobalStyle`
 
 
 ::-webkit-scrollbar-track {
-  background: transparent
+  background: transparent;
   border: 0px none #ffffff;
   border-radius: 50px;
 }

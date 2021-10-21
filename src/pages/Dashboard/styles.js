@@ -25,14 +25,6 @@ export const BoxInfoContainer = styled.div `
     font-size: 2rem;
     margin-top: 5%;
     font-weight: lighter;
-
-    &::before{
-      content: "Olá, ";
-    }
-
-    &::after{
-      content: "!";
-    }
   }
 
   @media (min-width: 1024px){
