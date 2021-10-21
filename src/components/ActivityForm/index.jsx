@@ -75,7 +75,6 @@ const ActivityForm = () => {
   }
   return (
     <>
-      <h1>Atividades</h1>
       <Container>
         <form onSubmit={handleSubmit(onSubmitActivity)} className="formInputs">
           <h2>Adicione uma atividade</h2>
