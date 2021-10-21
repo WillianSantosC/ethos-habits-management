@@ -9,9 +9,9 @@ export const AccessProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("@ethos:access")) || ""
   );
 
-  const [parse, setParse] = useState(
-    jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
-  );
+  const [parse, setParse] =
+    useState();
+    // jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
 
   const [authenticated, setAuthenticated] = useState(false);
 
