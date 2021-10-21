@@ -12,11 +12,6 @@ function UserProfile() {
   const { parse } = useContext(AccessContext);
   const { setAuthenticated } = useContext(AccessContext);
 
-  // const [decodedUser] = useState(
-  //   jwtDecode(JSON.parse(localStorage.getItem("@ethos:access"))) || ""
-  // );
-  // const { setAuthenticated } = useContext(AccessContext);
-
   function getUserInfo() {
     api.get(`users/${parse.user_id}/`).then((res) => setUserInfo(res.data));
   }
@@ -47,7 +42,7 @@ function UserProfile() {
         <div className="email">
           <span>{userInfo.email}</span>
         </div>
-        <img src={MobileLogOff} alt="LogOff" className="mobileLogOff" />
+        <img src={LogOff} alt="LogOff" className="mobileLogOff" />
       </div>
     </UserContainer>
   );

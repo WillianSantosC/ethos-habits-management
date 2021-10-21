@@ -4,12 +4,14 @@ import goalIcon from "../../assets/img/goal.png";
 import activityIcon from "../../assets/img/note-book.png";
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
+import { GroupContext } from "../../providers/Group";
+
 import { DataContainer } from "./styles";
 
 const BoxInfo = () => {
-  //Pegar os dados do usuários e substituir no Objeto
-
   const { myHabits } = useContext(HabitsContext);
+  const { myGroups } = useContext(GroupContext);
+ 
   const funFacts = [
     "Sua vida é em grande parte a soma de todos seus hábitos - bons ou ruins.",
     "Você pode pegar as redeas de sua vida ao mudar seus hábitos",
@@ -44,8 +46,9 @@ const BoxInfo = () => {
   ];
 
   const dataCard = [
+
     { name: "Habits", icon: habitsIcon, quantity: myHabits.length },
-    { name: "My Groups", icon: groupIcon, quantity: 3 },
+       { name: "Groups", icon: groupIcon, quantity: myGroups.length },
   ];
 
   return (

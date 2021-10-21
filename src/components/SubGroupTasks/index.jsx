@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { GoalsContext } from "../../providers/Goal";
 import { AiOutlineCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
-import { TiEdit } from "react-icons/ti";
 import { AccessContext } from "../../providers/Access";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -12,8 +11,11 @@ import Button from "../../components/Button";
 import api from "../../services/api";
 import ActivityForm from "../ActivityForm";
 import { Card, CardText, CardTitle, SideComponent } from "../HabitsCard/style";
-import { Container } from "./style";
+import { ButtonComponent, Container, GoalsContainer } from "./style";
 import toast from "react-hot-toast";
+import { List, Title } from "../../pages/Groups/style";
+import Menu from "../../components/Menu";
+import { Link } from "react-router-dom";
 
 function SubGroupTasks() {
   const { id } = useParams();
@@ -75,11 +77,15 @@ function SubGroupTasks() {
   }
 
   return (
-    <>
-      <h1>Atividades e objetivos</h1>
+    <GoalsContainer>
+      <ButtonComponent>
+        <Link to="/groups">Voltar para Grupos</Link>
+      </ButtonComponent>
+      <Title>Atividades e objetivos</Title>
+
       <Container>
         <form onSubmit={handleSubmit(onSubmit)} className="formInputs">
-          <h1>Adicione um Objetivo</h1>
+          <Title>Adicione um Objetivo</Title>
 
           <TextField
             size="small"
@@ -110,23 +116,27 @@ function SubGroupTasks() {
           <Button type="submit">Adicionar</Button>
         </form>
       </Container>
-      {groupGoals.map((item, index) => (
-        <Card key={index}>
-          <SideComponent>
-            <AiOutlineCheckCircle
-              onClick={() => handleEditGoal(item.id, item.achieved)}
-            ></AiOutlineCheckCircle>
-            <CardTitle>{item.title}</CardTitle>
-            <AiOutlineCloseCircle onClick={() => deleteGoal(item.id)} />
-          </SideComponent>
+      <Title>Meus Objetivos</Title>
+      <List>
+        {groupGoals.map((item, index) => (
+          <Card key={index}>
+            <SideComponent>
+              <AiOutlineCheckCircle
+                onClick={() => handleEditGoal(item.id, item.achieved)}
+              ></AiOutlineCheckCircle>
+              <CardTitle>{item.title}</CardTitle>
+              <AiOutlineCloseCircle onClick={() => deleteGoal(item.id)} />
+            </SideComponent>
 
-          <CardText>{item.difficulty}</CardText>
+            <CardText>{item.difficulty}</CardText>
 
-          <CardTitle>{item.achieved ? "Completo" : "Incompleto"}</CardTitle>
-        </Card>
-      ))}
-      <ActivityForm></ActivityForm>
-    </>
+            <CardTitle>{item.achieved ? "Completo" : "Incompleto"}</CardTitle>
+          </Card>
+        ))}
+      </List>
+
+      <ActivityForm />
+    </GoalsContainer>
   );
 }
 

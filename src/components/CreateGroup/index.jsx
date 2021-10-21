@@ -8,6 +8,7 @@ import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
 import { useContext } from "react";
 import toast from "react-hot-toast";
+import { Title } from "../../pages/Groups/style";
 
 const CreateGroup = () => {
   const formSchema = yup.object().shape({
@@ -44,7 +45,7 @@ const CreateGroup = () => {
 
   return (
     <Container>
-      <h1>Criar um novo grupo</h1>
+      <Title>Criar um novo grupo</Title>
       <form onSubmit={handleSubmit(handleData)}>
         <TextField
           size="small"
