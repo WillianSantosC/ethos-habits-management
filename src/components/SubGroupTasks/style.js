@@ -7,6 +7,7 @@ export const Container = styled.div`
   width: 80%;
   margin: auto;
   text-align: center;
+  margin-bottom: 20px;
 
   .MuiOutlinedInput-root {
     background: var(--boxes);

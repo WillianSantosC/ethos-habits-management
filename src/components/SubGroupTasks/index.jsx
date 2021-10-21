@@ -76,6 +76,7 @@ function SubGroupTasks() {
 
   return (
     <>
+      <h1>Atividades e objetivos</h1>
       <Container>
         <form onSubmit={handleSubmit(onSubmit)} className="formInputs">
           <h1>Adicione um Objetivo</h1>
