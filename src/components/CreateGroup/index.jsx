@@ -38,7 +38,6 @@ const CreateGroup = () => {
         toast.success("Grupo criado");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao criar");
       });
   }

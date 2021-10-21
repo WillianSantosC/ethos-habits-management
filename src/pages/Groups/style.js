@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PageContainer = styled.div`
+export const PageContainer = styled.div `
   display: flex;
   width: 100%;
   margin: 100px auto;
@@ -10,7 +10,7 @@ export const PageContainer = styled.div`
   }
 `;
 
-export const Search = styled.div`
+export const Search = styled.div `
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@ export const Search = styled.div`
   }
 `;
 
-export const GroupContainer = styled.div`
+export const GroupContainer = styled.div `
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -43,15 +43,20 @@ export const GroupContainer = styled.div`
   ul {
     margin-bottom: 15px;
   }
+  @media (min-width: 1024px){
+    overflow: auto;
+    height: 100vh;
+
+  }
 `;
 
-export const DisplayCards = styled.div`
+export const DisplayCards = styled.div `
   width: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-export const List = styled.ul`
+export const List = styled.ul `
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -65,7 +70,7 @@ export const List = styled.ul`
   justify-content: center;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h3 `
   font-weight: lighter;
   font-size: 1.5em;
   margin-top: 15px;

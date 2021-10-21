@@ -56,7 +56,6 @@ function Habits() {
         toast.success("Hábito criado");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao criar");
       });
   }

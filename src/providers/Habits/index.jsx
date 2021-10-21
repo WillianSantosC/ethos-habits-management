@@ -38,7 +38,6 @@ export const HabitsProvider = ({ children }) => {
         toast.success("Removido");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao remover");
       });
   }
@@ -56,7 +55,6 @@ export const HabitsProvider = ({ children }) => {
         toast.success("Atualizado");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao atualizar");
       });
   }

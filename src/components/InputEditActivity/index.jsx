@@ -28,7 +28,6 @@ const InputEditActivity = ({ setIsShow, id }) => {
         .catch((err) => {
           setIsShow(false);
           toast.error("Falha ao editar");
-          console.log(err);
         });
     } else {
       toast.error("Campo vazio, insira um novo título");

@@ -14,7 +14,6 @@ import { Card, CardText, CardTitle, SideComponent } from "../HabitsCard/style";
 import { ButtonComponent, Container, GoalsContainer } from "./style";
 import toast from "react-hot-toast";
 import { List, Title } from "../../pages/Groups/style";
-import Menu from "../../components/Menu";
 import { Link } from "react-router-dom";
 
 function SubGroupTasks() {
@@ -52,7 +51,6 @@ function SubGroupTasks() {
         toast.success("Grupo criado");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao criar");
       });
   }
@@ -71,7 +69,6 @@ function SubGroupTasks() {
         toast.success("Objetivo editado");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao editar");
       });
   }

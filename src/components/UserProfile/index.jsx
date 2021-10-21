@@ -3,7 +3,6 @@ import LogOff from "../../assets/img/right-arrow.png";
 import { useHistory } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import api from "../../services/api";
-import MobileLogOff from "../../assets/img/remove.png";
 import { AccessContext } from "../../providers/Access";
 
 function UserProfile() {
@@ -42,11 +41,16 @@ function UserProfile() {
         <div className="email">
           <span>{userInfo.email}</span>
         </div>
-        <img src={LogOff} alt="LogOff" className="mobileLogOff" onClick = {() => {
-          localStorage.clear()
-          setAuthenticated(false)
-          history.push('/')
-        }} />
+        <img
+          src={LogOff}
+          alt="LogOff"
+          className="mobileLogOff"
+          onClick={() => {
+            localStorage.clear();
+            setAuthenticated(false);
+            history.push("/");
+          }}
+        />
       </div>
     </UserContainer>
   );

@@ -27,7 +27,7 @@ function Login() {
 
   const history = useHistory();
 
-  const [animationState, setAnimationState] = useState({
+  const [animationState] = useState({
     isStopped: false,
     isPaused: false,
   });
@@ -65,7 +65,6 @@ function Login() {
         window.location.href = "/dashboard";
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Email ou senha inválidos");
       });
   };

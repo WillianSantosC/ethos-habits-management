@@ -21,7 +21,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState(false);
   const { authenticated } = useContext(AccessContext);
 
-  const [animationState, setAnimationState] = useState({
+  const [animationState] = useState({
     isStopped: false,
     isPaused: false,
   });
@@ -66,12 +66,10 @@ function Register() {
     api
       .post("/users/", data)
       .then((res) => {
-        console.log(res);
         toast.success("Sucesso ao criar a conta");
         return history.push("/");
       })
       .catch((err) => toast.error("Erro ao criar a conta, tente outro email"));
-    console.log(data);
   }
 
   if (authenticated) {

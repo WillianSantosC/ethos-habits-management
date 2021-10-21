@@ -26,8 +26,6 @@ function Groups() {
     groups,
     subscribeUser,
     unsubscribeGroup,
-    nextPage,
-    previousPage,
     getUserGroups,
     allGroups,
   } = useContext(GroupContext);
@@ -110,11 +108,6 @@ function Groups() {
               />
             ))}
           </List>
-
-          {/* <div>
-            <button onClick={() => previousPage()}>Previous Page</button>
-            <button onClick={() => nextPage()}>Next Page</button>
-          </div> */}
         </ul>
       </GroupContainer>
     </PageContainer>

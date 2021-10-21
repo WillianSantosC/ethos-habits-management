@@ -29,7 +29,6 @@ export const ActivityProvider = ({ children }) => {
         toast.success("Removido");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao remover");
       });
   }
