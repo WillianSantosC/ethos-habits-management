@@ -2,20 +2,22 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField, InputAdornment, IconButton } from "@material-ui/core";
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import Button from "../../components/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { Animation, Container, MainContainer } from "./style";
 import Lottie from "react-lottie";
 import animationData from "../../assets/animations/Security.json";
+import { AccessContext } from "../../providers/Access";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
+  const { authenticated } = useContext(AccessContext);
 
   const [animationState, setAnimationState] = useState({
     isStopped: false,
@@ -68,6 +70,10 @@ function Register() {
       })
       .catch((err) => toast.error("Erro ao criar a conta, tente outro email"));
     console.log(data);
+  }
+
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
   }
 
   return (

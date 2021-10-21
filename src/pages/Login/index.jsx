@@ -5,7 +5,7 @@ import api from "../../services/api";
 import { useContext, useState } from "react";
 import { AccessContext } from "../../providers/Access";
 import { TextField, InputAdornment, IconButton } from "@material-ui/core";
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { toast } from "react-hot-toast";
@@ -18,14 +18,18 @@ import ImgManagement from "../../assets/img/management (1).png";
 import ImgHighFive from "../../assets/img/high-five.png";
 
 function Login() {
-  const { addToLocalStorage, token } = useContext(AccessContext);
+  const { addToLocalStorage, authenticated } = useContext(AccessContext);
   const { addUsernameToLocal } = useContext(UserContext);
+
   const [showPassword, setShowPassword] = useState(false);
+
   const history = useHistory();
+
   const [animationState, setAnimationState] = useState({
     isStopped: false,
     isPaused: false,
   });
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -36,8 +40,8 @@ function Login() {
   };
 
   const schema = yup.object().shape({
-    username: yup.string().required("Required username"),
-    password: yup.string().required("Required password"),
+    username: yup.string().required("Campo Obrigatório"),
+    password: yup.string().required("Campo Obrigatório"),
   });
 
   const {
@@ -56,13 +60,17 @@ function Login() {
         toast.success("Login realizado com sucesso");
         addToLocalStorage(access);
         addUsernameToLocal(data.username);
-        return history.push("/dashboard");
+        window.location.href = "/dashboard";
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Falha ao realizar Login");
+        toast.error("Email ou senha inválidos");
       });
   };
+
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <MainContainer>
