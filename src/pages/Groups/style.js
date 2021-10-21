@@ -4,13 +4,39 @@ export const PageContainer = styled.div`
   display: flex;
   width: 100%;
   margin: 100px auto;
+
+  @media (min-width: 1024px) {
+    margin: auto;
+  }
+`;
+
+export const Search = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 90%;
+  .MuiOutlinedInput-root {
+    background: var(--boxes);
+  }
+
+  button {
+    margin: 0;
+    width: 20%;
+  }
 `;
 
 export const GroupContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: 15px;
+  margin: auto;
   width: 90%;
   padding: 1%;
+
+  ul {
+    margin-bottom: 15px;
+  }
 `;
 
 export const DisplayCards = styled.div`
@@ -36,4 +62,5 @@ export const List = styled.ul`
 export const Title = styled.h3`
   font-weight: lighter;
   font-size: 1.5em;
+  margin-top: 15px;
 `;

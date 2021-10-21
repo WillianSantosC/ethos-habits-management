@@ -1,4 +1,6 @@
-import { Grid, TextField, Button, Container } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Container } from "./style";
+import Button from "../../components/Button";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -41,52 +43,44 @@ const CreateGroup = () => {
   }
 
   return (
-    <div>
-      <Container maxWidth="xs">
-        <Grid container>
-          <Grid className="grid">
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit(handleData)}>
-              <TextField
-                size="small"
-                margin="none"
-                label="name"
-                placeholder="name"
-                variant="outlined"
-                error={!!errors.name}
-                helperText={errors.name?.message}
-                {...register("name")}
-              />
+    <Container>
+      <h1>Criar um novo grupo</h1>
+      <form onSubmit={handleSubmit(handleData)}>
+        <TextField
+          size="small"
+          margin="none"
+          label="Nome"
+          placeholder="Nome"
+          variant="outlined"
+          error={!!errors.name}
+          helperText={errors.name?.message}
+          {...register("name")}
+        />
 
-              <TextField
-                size="small"
-                label="Category"
-                placeholder="Category"
-                variant="outlined"
-                margin="none"
-                error={!!errors.category}
-                helperText={errors.category?.message}
-                {...register("category")}
-              />
+        <TextField
+          size="small"
+          label="Categoria"
+          placeholder="Categoria"
+          variant="outlined"
+          margin="none"
+          error={!!errors.category}
+          helperText={errors.category?.message}
+          {...register("category")}
+        />
 
-              <TextField
-                size="small"
-                label="description"
-                placeholder="description"
-                variant="outlined"
-                margin="none"
-                error={!!errors.description}
-                helperText={errors.description?.message}
-                {...register("description")}
-              />
-              <Button color="primary" variant="contained" type="submit">
-                Enviar
-              </Button>
-            </form>
-          </Grid>
-        </Grid>
-      </Container>
-    </div>
+        <TextField
+          size="small"
+          label="Descrição"
+          placeholder="Descrição"
+          variant="outlined"
+          margin="none"
+          error={!!errors.description}
+          helperText={errors.description?.message}
+          {...register("description")}
+        />
+        <Button type="submit">Criar</Button>
+      </form>
+    </Container>
   );
 };
 
