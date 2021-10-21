@@ -1,17 +1,33 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const DashboardContainer = styled.div `
-  display: flex;
-  flex-direction: column;
-  margin: 100px 0;
+const apear = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(40px);
 
-  @media (min-width: 1024px){
-    flex-direction: row;
-    margin: 0;
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
   }
 `;
 
-export const BoxInfoContainer = styled.div `
+export const DashboardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 100px 0;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    margin: 0;
+    .laPPEe {
+      animation: ${apear} 0.9s;
+    }
+  }
+`;
+
+export const BoxInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +45,7 @@ export const BoxInfoContainer = styled.div `
     font-weight: lighter;
   }
 
-  @media (min-width: 1024px){
+  @media (min-width: 1024px) {
     width: 90%;
     h1{
       padding-top: 2%;
@@ -53,4 +69,4 @@ export const BoxInfoContainer = styled.div `
       }
     }
   }
-`
+`;
