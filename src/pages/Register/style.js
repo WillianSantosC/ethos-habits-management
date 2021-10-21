@@ -1,13 +1,13 @@
 import styled, { keyframes } from "styled-components";
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.div `
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
 `;
-const apear = keyframes`
+const apear = keyframes `
   from{
     opacity:0;
     transform: translateX(-50px);
@@ -19,7 +19,7 @@ const apear = keyframes`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.div `
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,13 +53,13 @@ export const Container = styled.div`
   }
 
   h2 {
-    background-image: var(--button1);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
     font-size: 2rem;
-    margin-top: -1vh;
+    margin-bottom: 10vh;
+    margin-top: -10vh;
+    img{
+      width: 200px;
+
+    }
   }
 
   #label {
@@ -118,7 +118,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Animation = styled.div`
+export const Animation = styled.div `
   display: none;
   @media (min-width: 1024px) {
     display: flex;
@@ -144,7 +144,12 @@ export const Animation = styled.div`
 
     h1 {
       margin-top: 5px;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      img{
+        width: 80px;
+        margin-left: 1px;
+        transform: translateY(5px);
+      }
     }
     p {
       font-size: 0.7rem;

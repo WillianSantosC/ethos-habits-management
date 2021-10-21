@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 
 
-export const MenuContainer = styled.div`
+export const MenuContainer = styled.div `
+z-index: 1;
   width: 100vw;
   position: fixed;
   bottom: 0;
@@ -45,9 +46,8 @@ export const MenuContainer = styled.div`
 
     h3 {
       display: block;
-      margin-top: 20px;
-      span {
-        color: var(--background);
+      img{
+        width: 100px;
       }
     }
     nav {
@@ -61,7 +61,7 @@ export const MenuContainer = styled.div`
   }
 `;
 
-export const Li = styled.li`
+export const Li = styled.li `
   margin-top: 5px;
   display: flex;
   align-items: center;
