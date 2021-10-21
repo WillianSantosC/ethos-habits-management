@@ -33,7 +33,10 @@ export default createGlobalStyle`
 
     button{
         cursor: pointer;
-    }
+       &:hover{
+         opacity: 0.8;
+       }
+       }
 
     a{
         text-decoration: none;

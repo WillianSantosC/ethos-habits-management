@@ -42,7 +42,7 @@ function UserProfile() {
         <div className="email">
           <span>{userInfo.email}</span>
         </div>
-        <img src={MobileLogOff} alt="LogOff" className="mobileLogOff" />
+        <img src={LogOff} alt="LogOff" className="mobileLogOff" />
       </div>
     </UserContainer>
   );
