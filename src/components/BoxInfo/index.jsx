@@ -9,8 +9,6 @@ import { GroupContext } from "../../providers/Group";
 import { DataContainer } from "./styles";
 
 const BoxInfo = () => {
-  //Pegar os dados do usuários e substituir no Objeto
-
   const { myHabits } = useContext(HabitsContext);
   const { myGroups } = useContext(GroupContext);
  

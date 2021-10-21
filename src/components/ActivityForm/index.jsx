@@ -13,7 +13,6 @@ import { AiOutlineCloseCircle, AiOutlineClockCircle } from "react-icons/ai";
 import { FiMapPin } from "react-icons/fi";
 import Button from "../../components/Button";
 import InputEditActivity from "../InputEditActivity";
-import DateTimePicker from "react-datetime-picker";
 import {
   Card,
   CardText,
