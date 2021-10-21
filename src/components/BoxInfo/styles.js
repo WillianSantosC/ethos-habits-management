@@ -136,7 +136,6 @@ export const DataContainer = styled.div`
           width: 100%;
           align-items: center;
           div {
-            transition: ease-in;
             a {
               width: 100%;
               flex-direction: column;
@@ -153,10 +152,6 @@ export const DataContainer = styled.div`
               }
               &:hover {
                 color: var(--details);
-                img {
-                  border: 3px solid var(--details);
-                  margin: 0 -3px 20px;
-                }
               }
             }
           }
