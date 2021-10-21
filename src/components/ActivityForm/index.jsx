@@ -25,6 +25,7 @@ import {
   SideComponent,
 } from "../HabitsCard/style";
 import { Container } from "./style";
+import toast from "react-hot-toast";
 
 const ActivityForm = () => {
   const { id } = useParams();
@@ -65,12 +66,12 @@ const ActivityForm = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        toast.success("Atividade criada");
+      })
       .catch((err) => {
-        console.log(err);
-        console.log(data);
+        toast.error("Falha ao criar");
       });
-    console.log(calendar);
   }
   return (
     <>

@@ -1,4 +1,5 @@
 import { createContext, useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../../services/api";
 
 export const HabitsContext = createContext([]);
@@ -33,8 +34,13 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Removido");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Falha ao remover");
+      });
   }
 
   function updateHabit(update, id) {
@@ -46,7 +52,13 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Atualizado");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Falha ao atualizar");
+      });
   }
 
   return (

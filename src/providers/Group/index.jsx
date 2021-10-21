@@ -7,7 +7,7 @@ import {
 } from "react";
 import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
-
+import { toast } from "react-hot-toast";
 export const GroupContext = createContext([]);
 
 export const GroupProvider = ({ children }) => {
@@ -47,8 +47,14 @@ export const GroupProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Inscrito");
+      })
+
+      .catch((err) => {
+        console.log(err);
+        toast.error("Falha na inscrição");
+      });
   }
 
   function unsubscribeGroup(id) {
@@ -60,8 +66,13 @@ export const GroupProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Você saiu do grupo");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Falha ao sair do grupo");
+      });
   }
 
   function nextPage() {
@@ -96,7 +107,7 @@ export const GroupProvider = ({ children }) => {
         nextPage,
         previousPage,
         getUserGroups,
-        allGroups
+        allGroups,
       }}
     >
       {children}

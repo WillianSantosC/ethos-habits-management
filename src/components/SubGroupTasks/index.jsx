@@ -13,6 +13,7 @@ import api from "../../services/api";
 import ActivityForm from "../ActivityForm";
 import { Card, CardText, CardTitle, SideComponent } from "../HabitsCard/style";
 import { Container } from "./style";
+import toast from "react-hot-toast";
 
 function SubGroupTasks() {
   const { id } = useParams();
@@ -45,8 +46,13 @@ function SubGroupTasks() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Grupo criado");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Falha ao criar");
+      });
   }
   function handleEditGoal(id, boolean) {
     const jsonToApi = {
@@ -59,8 +65,13 @@ function SubGroupTasks() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Objetivo editado");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Falha ao editar");
+      });
   }
 
   return (
