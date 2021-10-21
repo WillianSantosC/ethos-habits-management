@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import { AccessContext } from "../../providers/Access";
+import toast from "react-hot-toast";
 
 export const GoalsContext = createContext([]);
 
@@ -24,8 +25,12 @@ export const GoalsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Removido");
+      })
+      .catch((err) => {
+        toast.error("Falha ao remover");
+      });
   }
 
   return (
