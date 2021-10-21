@@ -31,7 +31,6 @@ export const BoxInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 
   h1 {
     padding-top: 10%;
@@ -46,7 +45,7 @@ export const BoxInfoContainer = styled.div`
   @media (min-width: 1024px) {
     width: 90%;
     overflow: auto;
-
+    height: 100vh;
     h1 {
       padding-top: 2%;
       font-size: 2.5rem;

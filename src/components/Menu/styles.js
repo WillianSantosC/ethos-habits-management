@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 export const MenuContainer = styled.div`
   width: 100vw;
   position: fixed;
@@ -10,7 +8,7 @@ export const MenuContainer = styled.div`
   background: #1b1a24;
   height: 100px;
   align-items: center;
-
+  z-index: 2;
   h3 {
     display: none;
   }

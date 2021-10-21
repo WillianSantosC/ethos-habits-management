@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DataContainer = styled.div`
   display: flex;
   align-items: center;
-
+  
   ul {
     display: flex;
     flex-direction: row;
