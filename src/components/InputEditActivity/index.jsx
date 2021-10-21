@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import api from "../../services/api";
 import { AccessContext } from "../../providers/Access";
 import toast from "react-hot-toast";
+import { LittleButton } from "./styles";
 
 const InputEditActivity = ({ setIsShow, id }) => {
   const { token } = useContext(AccessContext);
@@ -29,6 +30,8 @@ const InputEditActivity = ({ setIsShow, id }) => {
           toast.error("Falha ao editar");
           console.log(err);
         });
+    } else {
+      toast.error("Campo vazio, insira um novo título");
     }
   }
 
@@ -41,7 +44,9 @@ const InputEditActivity = ({ setIsShow, id }) => {
         onChange={(e) => setNewTitle(e.target.value)}
       ></input>
 
-      <button onClick={() => EditActivity(id, newTitle)}>Save</button>
+      <LittleButton onClick={() => EditActivity(id, newTitle)}>
+        Save
+      </LittleButton>
     </div>
   );
 };

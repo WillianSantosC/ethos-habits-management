@@ -10,11 +10,9 @@ import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
 import { TextField } from "@material-ui/core";
 import { AiOutlineCloseCircle, AiOutlineClockCircle } from "react-icons/ai";
-import { TiEdit } from "react-icons/ti";
 import { FiMapPin } from "react-icons/fi";
 import Button from "../../components/Button";
 
-import InputEditActivity from "../InputEditActivity";
 import DateTimePicker from "react-datetime-picker";
 import {
   Card,
@@ -26,6 +24,7 @@ import {
 } from "../HabitsCard/style";
 import { Container } from "./style";
 import toast from "react-hot-toast";
+import InputActivity from "../InputActivity";
 
 const ActivityForm = () => {
   const { id } = useParams();
@@ -33,8 +32,6 @@ const ActivityForm = () => {
     useContext(ActivityContext);
   const { token } = useContext(AccessContext);
   const [calendar, setCalendar] = useState(new Date());
-
-  const [isShow, setIsShow] = useState(false);
 
   const schema = yup.object().shape({
     titleActivity: yup.string().required("Campo Obrigatório"),
@@ -128,14 +125,7 @@ const ActivityForm = () => {
       {groupActivity.map((item, index) => (
         <Card key={index}>
           <SideComponent>
-            <TiEdit
-              onClick={() => {
-                setIsShow(true);
-              }}
-            >
-              Edit Activity
-            </TiEdit>
-            {isShow && <InputEditActivity setIsShow={setIsShow} id={item.id} />}
+            <InputActivity item={item} />
             <CardTitle>{item.title}</CardTitle>
             <AiOutlineCloseCircle onClick={() => deleteActivity(item.id)} />
           </SideComponent>
