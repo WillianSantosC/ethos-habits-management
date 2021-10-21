@@ -55,9 +55,11 @@ const ActivityForm = () => {
   }, [groupActivity]);
 
   function onSubmitActivity({ titleActivity, date, time }) {
+    const newTime = time.split(":");
+    const hour = Number(newTime[0]) + 3;
     const data = {
       title: titleActivity,
-      realization_time: `${date}T${time}:00Z`,
+      realization_time: `${date}T${hour + ":" + newTime[1]}:00Z`,
       group: id,
     };
     api
