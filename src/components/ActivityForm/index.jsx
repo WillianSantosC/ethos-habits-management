@@ -81,7 +81,7 @@ const ActivityForm = () => {
             margin="none"
             type="text"
             fullWidth
-            variant="outlined"
+            variant="filled"
             error={!!errors.titleActivity}
             helperText={errors.titleActivity?.message}
             placeholder="Título"
@@ -93,7 +93,7 @@ const ActivityForm = () => {
             margin="none"
             type="time"
             fullWidth
-            variant="outlined"
+            variant="filled"
             error={!!errors.time}
             helperText={errors.time?.message}
             placeholder="Título"
@@ -105,7 +105,7 @@ const ActivityForm = () => {
             margin="none"
             type="date"
             fullWidth
-            variant="outlined"
+            variant="filled"
             error={!!errors.date}
             helperText={errors.date?.message}
             placeholder="Título"

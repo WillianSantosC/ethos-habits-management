@@ -90,7 +90,7 @@ function SubGroupTasks() {
             margin="none"
             fullWidth
             type="text"
-            variant="outlined"
+            variant="filled"
             error={!!errors.title}
             helperText={errors.title?.message}
             placeholder="Título"
@@ -103,7 +103,7 @@ function SubGroupTasks() {
             size="small"
             type="text"
             fullWidth
-            variant="outlined"
+            variant="filled"
             margin="none"
             error={!!errors.difficulty}
             helperText={errors.difficulty?.message}
