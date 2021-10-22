@@ -10,5 +10,6 @@ export const Container = styled.button`
   border: none;
   border-radius: 8px;
   margin-top: 16px;
-  width: 100%;
+  width: 90%;
+  font-size: 1rem;
 `;

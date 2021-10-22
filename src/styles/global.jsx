@@ -7,6 +7,7 @@ export default createGlobalStyle`
         box-sizing: border-box;
         outline: 0;
         list-style-type: none;
+        font-family: 'Lato', sans-serif;
     }
 
     :root{
@@ -26,25 +27,48 @@ export default createGlobalStyle`
         color: var(--font-color);
     }
 
-    input, button{
-       
-    }
-
-    h1,h2,h3,h4,h5,h6{
-        
-    }
-
-    p{
-       
+    h1, h2 {
+      font-weight: 300;
     }
 
     button{
         cursor: pointer;
-    }
+       &:hover{
+         opacity: 0.8;
+       }
+       }
 
     a{
         text-decoration: none;
     }
 
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+    ::-webkit-scrollbar-button {
+      width: 0px;
+      height: 0px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #B45EF7;
+      border: 0px none #ffffff;
+      border-radius: 50px;
+    }
 
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+      border: 0px none #ffffff;
+      border-radius: 50px;
+    }
+
+
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+    .MuiOutlinedInput-input {
+    color: #ffffffe6;
+  }
+ 
 `;

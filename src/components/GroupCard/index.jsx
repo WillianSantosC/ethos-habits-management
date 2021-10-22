@@ -1,14 +1,33 @@
+import { Link } from "react-router-dom";
+import { Card, CardText, CardTitle, DataComponent } from "../HabitsCard/style";
+import { AiOutlineLogout } from "react-icons/ai";
+import { FiMoreHorizontal } from "react-icons/fi";
+import EditGroup from "../EditGroup";
+
 const GroupCard = ({
-  group: { id, name, description, category },
+  group: { id, name, category },
   unsubscribeGroup,
+  item,
 }) => {
   return (
-    <li>
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <p>{category}</p>
-      <button onClick={() => unsubscribeGroup(id)}>Unsubscribe</button>
-    </li>
+    <Card>
+      <DataComponent>
+        <p> </p>
+        <Link to={`/subscriptions/${id}`}>
+          <FiMoreHorizontal id="more-button" />
+        </Link>
+        <CardTitle>{name}</CardTitle>
+        <AiOutlineLogout
+          onClick={() => unsubscribeGroup(id)}
+          id="exit-button"
+        ></AiOutlineLogout>
+      </DataComponent>
+      <DataComponent>
+        <EditGroup item={item} />
+        <CardText>{category}</CardText>
+      </DataComponent>
+    </Card>
+
   );
 };
 

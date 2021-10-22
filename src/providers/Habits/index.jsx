@@ -1,15 +1,16 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../../services/api";
 
 export const HabitsContext = createContext([]);
 
 export const HabitsProvider = ({ children }) => {
   const [myHabits, setMyHabits] = useState([]);
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@ethos:access")) || ""
+  );
 
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM0OTA4OTM3LCJqdGkiOiI5ZjFhY2IzOTVlM2U0NDFlOGZhYmMwN2FlMDFmMzIwZSIsInVzZXJfaWQiOjE1NH0.gN5205MvYs1_uEteOOXRFbjOAbUDqhF-99Idt4tfHFc";
-  // O token foi pego da api e colocado aqui para teste
-  function getHabits() {
+  const getHabits = useCallback(() => {
     api
       .get("/habits/personal/", {
         headers: {
@@ -18,10 +19,13 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((res) => setMyHabits(res.data))
       .catch((err) => console.log(err));
-  }
+  }, [setMyHabits, token]);
+
   useEffect(() => {
-    getHabits();
-  }, [myHabits]);
+    if (myHabits.length === 0) {
+      getHabits();
+    }
+  }, [myHabits.length, getHabits]);
 
   function removeHabits(id) {
     api
@@ -30,8 +34,12 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Removido");
+      })
+      .catch((err) => {
+        toast.error("Falha ao remover");
+      });
   }
 
   function updateHabit(update, id) {
@@ -43,7 +51,12 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Atualizado");
+      })
+      .catch((err) => {
+        toast.error("Falha ao atualizar");
+      });
   }
 
   return (

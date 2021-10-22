@@ -1,72 +1,105 @@
-import { createContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+} from "react";
+import { AccessContext } from "../../providers/Access";
 import api from "../../services/api";
-
+import { toast } from "react-hot-toast";
 export const GroupContext = createContext([]);
 
 export const GroupProvider = ({ children }) => {
-  const token = useState(
-    JSON.parse(localStorage.getItem("@ethos:access")) || ""
-  );
-
+  const { token } = useContext(AccessContext);
+  const [page, setPage] = useState(1);
+  const [allGroupsCount, setAllGroupsCount] = useState(0);
   const [myGroups, setMyGroups] = useState([]);
   const [groups, setGroups] = useState([]);
 
-  function getUserGroups() {
+  const getUserGroups = useCallback(() => {
     api
-      .get("/groups/subscriptions/", null, {
+      .get("/groups/subscriptions/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => setMyGroups(res.data))
       .catch((err) => console.log(err));
-  }
+  }, [token]);
 
-  function allGroups() {
+  const allGroups = useCallback(() => {
     api
-      .get("/groups/")
-      .then((res) => setGroups(res.data.results))
+      .get(`/groups/?page=${page}`)
+      .then((res) => {
+        setGroups(res.data.results);
+        setAllGroupsCount(res.data.count);
+      })
       .catch((err) => console.log(err));
-  }
+  }, [page]);
 
   function subscribeUser(id) {
-    if (token) {
-      api
-        .post(`/groups/${id}/subscribe/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          null: "",
-        })
-        .then((res) => console.log(res.data))
-        .catch((err) => console.log(err));
-    }
+    api
+      .post(`/groups/${id}/subscribe/`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        toast.success("Inscrito");
+      })
+
+      .catch((err) => {
+        toast.error("Falha na inscrição");
+      });
   }
 
   function unsubscribeGroup(id) {
-    if (token) {
-      api
-        .delete(`/groups/${id}/unsubscribe/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => console.log(res.data))
-        .catch((err) => console.log(err));
+    api
+      .delete(`/groups/${id}/unsubscribe/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        toast.success("Você saiu do grupo");
+      })
+      .catch((err) => {
+        toast.error("Falha ao sair do grupo");
+      });
+  }
+
+  function nextPage() {
+    if (page < allGroupsCount / 15) {
+      setPage(page + 1);
+    }
+  }
+
+  function previousPage() {
+    if (page > 1) {
+      setPage(page - 1);
     }
   }
 
   useEffect(() => {
-    getUserGroups();
-  }, [myGroups]);
-
-  useEffect(() => {
-    allGroups();
-  }, [groups]);
+    if (groups.length === 0) {
+      allGroups();
+    }
+  }, [allGroups, groups.length]);
 
   return (
     <GroupContext.Provider
-      value={{ myGroups, groups, subscribeUser, unsubscribeGroup }}
+      value={{
+        myGroups,
+        groups,
+        subscribeUser,
+        unsubscribeGroup,
+        nextPage,
+        previousPage,
+        getUserGroups,
+        allGroups,
+      }}
+
     >
       {children}
     </GroupContext.Provider>
