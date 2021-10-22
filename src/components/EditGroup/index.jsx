@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { TiEdit } from "react-icons/ti";
-import InputEditActivity from "../InputEditActivity";
+import InputEditGroup from "../InputEditGroup";
 
-const InputActivity = ({ item }) => {
+const EditGroup = ({ item }) => {
   const [isShow, setIsShow] = useState(false);
 
   return (
@@ -14,9 +14,9 @@ const InputActivity = ({ item }) => {
       >
         Edit Activity
       </TiEdit>
-      {isShow && <InputEditActivity setIsShow={setIsShow} id={item.id} />}
+      {isShow && <InputEditGroup setIsShow={setIsShow} id={item.id} />}
     </>
   );
 };
 
-export default InputActivity;
+export default EditGroup;

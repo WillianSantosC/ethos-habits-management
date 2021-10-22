@@ -67,6 +67,8 @@ export default createGlobalStyle`
     ::-webkit-scrollbar-corner {
       background: transparent;
     }
-
-
+    .MuiOutlinedInput-input {
+    color: #ffffffe6;
+  }
+ 
 `;
