@@ -77,6 +77,7 @@ const BoxInfo = () => {
                   <a href={dev.linked} target="_blank" rel="noreferrer">
                     <img src={dev.image} alt={dev.name} />
                     <span>{dev.name}</span>
+                    
                   </a>
                 </div>
               ))}
