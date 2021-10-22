@@ -42,7 +42,7 @@ function Menu() {
               }}
             >
               <img src={GroupsIcon} alt="Groups" className="iconImage" />
-              <span>Groups</span>
+              <span>Grupos</span>
             </Link>
           </Li>
           <Li highlighted={habits}>
@@ -55,7 +55,7 @@ function Menu() {
               }}
             >
               <img src={HabitsIcon} alt="Habits" className="iconImage" />
-              <span>Habits</span>
+              <span>Hábitos</span>
             </Link>
           </Li>
         </ul>

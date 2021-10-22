@@ -38,7 +38,6 @@ const CreateGroup = () => {
         toast.success("Grupo criado");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao criar");
       });
   }
@@ -52,7 +51,7 @@ const CreateGroup = () => {
           margin="none"
           label="Nome"
           placeholder="Nome"
-          variant="outlined"
+          variant="filled"
           error={!!errors.name}
           helperText={errors.name?.message}
           {...register("name")}
@@ -62,7 +61,7 @@ const CreateGroup = () => {
           size="small"
           label="Categoria"
           placeholder="Categoria"
-          variant="outlined"
+          variant="filled"
           margin="none"
           error={!!errors.category}
           helperText={errors.category?.message}
@@ -73,7 +72,7 @@ const CreateGroup = () => {
           size="small"
           label="Descrição"
           placeholder="Descrição"
-          variant="outlined"
+          variant="filled"
           margin="none"
           error={!!errors.description}
           helperText={errors.description?.message}

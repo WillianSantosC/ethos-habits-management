@@ -1,8 +1,6 @@
 import habitsIcon from "../../assets/img/pen.png";
 import groupIcon from "../../assets/img/personal-data.png";
-import goalIcon from "../../assets/img/goal.png";
-import activityIcon from "../../assets/img/note-book.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { HabitsContext } from "../../providers/Habits";
 import { GroupContext } from "../../providers/Group";
 
@@ -11,7 +9,8 @@ import { DataContainer } from "./styles";
 const BoxInfo = () => {
   const { myHabits } = useContext(HabitsContext);
   const { myGroups } = useContext(GroupContext);
- 
+  const [randomPosition] = useState(Math.floor(Math.random() * 6));
+
   const funFacts = [
     "Sua vida é em grande parte a soma de todos seus hábitos - bons ou ruins.",
     "Você pode pegar as redeas de sua vida ao mudar seus hábitos",
@@ -24,8 +23,7 @@ const BoxInfo = () => {
   const devs = [
     {
       name: "Willian",
-      linked:
-        "https://ca.slack-edge.com/TQZR39SET-U01U86C2UER-06b57ca2fff3-512",
+      linked: "https://www.linkedin.com/in/willian-santos-089a35213/",
       image: "https://ca.slack-edge.com/TQZR39SET-U01U86C2UER-06b57ca2fff3-512",
     },
     {
@@ -46,20 +44,19 @@ const BoxInfo = () => {
   ];
 
   const dataCard = [
-
-    { name: "Habits", icon: habitsIcon, quantity: myHabits.length },
-       { name: "Groups", icon: groupIcon, quantity: myGroups.length },
+    { name: "Hábitos", icon: habitsIcon, quantity: myHabits.length },
+    { name: "Grupos", icon: groupIcon, quantity: myGroups.length },
   ];
+
+  useEffect(() => {}, [randomPosition]);
 
   return (
     <DataContainer>
       <ul>
         <li className="extraBox">
           <div>
-            <span className="boxTitle">Fun Facts</span>
-            <span className="funFact">
-              {funFacts[Math.floor(Math.random() * funFacts.length)]}
-            </span>
+            <span className="boxTitle">Curiosidades</span>
+            <span className="funFact">{funFacts[randomPosition]}</span>
           </div>
         </li>
         {dataCard.map((item, index) => (

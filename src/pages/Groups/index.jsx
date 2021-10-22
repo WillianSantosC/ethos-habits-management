@@ -26,8 +26,6 @@ function Groups() {
     groups,
     subscribeUser,
     unsubscribeGroup,
-    nextPage,
-    previousPage,
     getUserGroups,
     allGroups,
   } = useContext(GroupContext);
@@ -49,6 +47,7 @@ function Groups() {
       <Menu />
 
       <GroupContainer>
+        <h1>Grupos</h1>
         <CreateGroup />
 
         <DisplayCards>
@@ -59,6 +58,7 @@ function Groups() {
                 group={item}
                 key={item.id}
                 unsubscribeGroup={unsubscribeGroup}
+                item={item}
               />
             ))}
           </List>
@@ -66,13 +66,14 @@ function Groups() {
 
         <ul>
           <div>
-            <h3>Filtrar grupo</h3>
+            <h3>Filtrar grupo por categoria</h3>
             <Search>
               <TextField
                 size="small"
                 margin="none"
+                label="Categoria"
                 placeholder="Educação, saúde, ..."
-                variant="outlined"
+                variant="filled"
                 fullWidth
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -110,11 +111,6 @@ function Groups() {
               />
             ))}
           </List>
-
-          {/* <div>
-            <button onClick={() => previousPage()}>Previous Page</button>
-            <button onClick={() => nextPage()}>Next Page</button>
-          </div> */}
         </ul>
       </GroupContainer>
     </PageContainer>

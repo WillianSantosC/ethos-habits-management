@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { ActivityContext } from "../../providers/Activity";
 import * as moment from "moment";
@@ -12,7 +12,6 @@ import { TextField } from "@material-ui/core";
 import { AiOutlineCloseCircle, AiOutlineClockCircle } from "react-icons/ai";
 import { FiMapPin } from "react-icons/fi";
 import Button from "../../components/Button";
-import InputEditActivity from "../InputEditActivity";
 import {
   Card,
   CardText,
@@ -24,7 +23,6 @@ import {
 import { ActivityContainer, Container } from "./style";
 import toast from "react-hot-toast";
 import InputActivity from "../InputActivity";
-import { GoalsContainer } from "../SubGroupTasks/style";
 import { List, Title } from "../../pages/Groups/style";
 
 const ActivityForm = () => {
@@ -32,7 +30,6 @@ const ActivityForm = () => {
   const { groupActivity, getGroupActivity, deleteActivity } =
     useContext(ActivityContext);
   const { token } = useContext(AccessContext);
-  const [calendar, setCalendar] = useState(new Date());
 
   const schema = yup.object().shape({
     titleActivity: yup.string().required("Campo Obrigatório"),
@@ -84,7 +81,7 @@ const ActivityForm = () => {
             margin="none"
             type="text"
             fullWidth
-            variant="outlined"
+            variant="filled"
             error={!!errors.titleActivity}
             helperText={errors.titleActivity?.message}
             placeholder="Título"
@@ -96,7 +93,7 @@ const ActivityForm = () => {
             margin="none"
             type="time"
             fullWidth
-            variant="outlined"
+            variant="filled"
             error={!!errors.time}
             helperText={errors.time?.message}
             placeholder="Título"
@@ -108,20 +105,12 @@ const ActivityForm = () => {
             margin="none"
             type="date"
             fullWidth
-            variant="outlined"
+            variant="filled"
             error={!!errors.date}
             helperText={errors.date?.message}
             placeholder="Título"
             {...register("date")}
           />
-          {/* <DateTimePicker
-            value={calendar}
-            onChange={(val) => setCalendar(val)}
-            format="d-M-y h:mm a"
-            required
-            disableClock
-            id="date"
-          /> */}
           <Button type="submit">Adicionar </Button>
         </form>
       </Container>

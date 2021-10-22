@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PageContainer = styled.div`
+export const PageContainer = styled.div `
   display: flex;
   width: 100%;
   margin: 100px auto;
@@ -10,7 +10,7 @@ export const PageContainer = styled.div`
   }
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div `
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,15 +18,19 @@ export const CardContainer = styled.div`
   gap: 10px;
 `;
 
-export const HabitsContainer = styled.div`
+export const HabitsContainer = styled.div `
   display: flex;
-  flex-wrap: wrap;
   width: 95%;
   padding: 1%;
   flex-direction: column;
+  @media (min-width: 1024px){
+    overflow: auto;
+    height: 100vh;
+
+  }
 `;
 
-export const Form = styled.div`
+export const Form = styled.div `
   background: var(--input-background);
   margin: auto;
   padding: 10px;

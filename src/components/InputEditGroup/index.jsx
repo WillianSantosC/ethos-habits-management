@@ -4,19 +4,19 @@ import { AccessContext } from "../../providers/Access";
 import toast from "react-hot-toast";
 import { LittleButton } from "./styles";
 
-const InputEditActivity = ({ setIsShow, id }) => {
+const InputEditGroup = ({ setIsShow, id }) => {
   const { token } = useContext(AccessContext);
 
   const [newTitle, setNewTitle] = useState("");
 
   function EditActivity(id, newTitle) {
     const jsonToApi = {
-      title: newTitle,
+      category: newTitle,
     };
 
     if (newTitle !== "") {
       api
-        .patch(`/activities/${id}/`, jsonToApi, {
+        .patch(`/groups/${id}/`, jsonToApi, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -27,7 +27,7 @@ const InputEditActivity = ({ setIsShow, id }) => {
         })
         .catch((err) => {
           setIsShow(false);
-          toast.error("Falha ao editar");
+          toast.error("Apenas o dono pode editar");
         });
     } else {
       toast.error("Campo vazio, insira um novo título");
@@ -50,4 +50,4 @@ const InputEditActivity = ({ setIsShow, id }) => {
   );
 };
 
-export default InputEditActivity;
+export default InputEditGroup;

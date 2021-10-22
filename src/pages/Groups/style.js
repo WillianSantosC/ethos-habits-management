@@ -19,6 +19,9 @@ export const Search = styled.div`
   .MuiOutlinedInput-root {
     background: var(--boxes);
   }
+  .MuiInputBase-input {
+    color: #ffffffe6;
+  }
 
   button {
     margin: 0;
@@ -42,6 +45,10 @@ export const GroupContainer = styled.div`
 
   ul {
     margin-bottom: 15px;
+  }
+  @media (min-width: 1024px) {
+    overflow: auto;
+    height: 100vh;
   }
 `;
 

@@ -1,5 +1,4 @@
 import { Switch, Route } from "react-router";
-import GroupGoals from "../components/GroupGoals";
 import SubGroupTasks from "../components/SubGroupTasks";
 import Dashboard from "../pages/Dashboard";
 import Groups from "../pages/Groups";
@@ -24,10 +23,6 @@ function Routes() {
 
       <Route path="/groups">
         <Groups />
-      </Route>
-
-      <Route path="/allGroups/:id">
-        <GroupGoals />
       </Route>
 
       <Route path="/subscriptions/:id">

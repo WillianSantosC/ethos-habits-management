@@ -40,7 +40,6 @@ export const GroupProvider = ({ children }) => {
   }, [page]);
 
   function subscribeUser(id) {
-    console.log(token);
     api
       .post(`/groups/${id}/subscribe/`, null, {
         headers: {
@@ -52,13 +51,11 @@ export const GroupProvider = ({ children }) => {
       })
 
       .catch((err) => {
-        console.log(err);
         toast.error("Falha na inscrição");
       });
   }
 
   function unsubscribeGroup(id) {
-    console.log(token);
     api
       .delete(`/groups/${id}/unsubscribe/`, {
         headers: {
@@ -69,7 +66,6 @@ export const GroupProvider = ({ children }) => {
         toast.success("Você saiu do grupo");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao sair do grupo");
       });
   }

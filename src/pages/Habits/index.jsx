@@ -56,7 +56,6 @@ function Habits() {
         toast.success("Hábito criado");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Falha ao criar");
       });
   }
@@ -68,7 +67,7 @@ function Habits() {
     <PageContainer>
       <Menu />
       <HabitsContainer>
-        <Title>Hábitos</Title>
+        <h1>Hábitos</h1>
         <Form>
           <Title>Adicione um novo hábito</Title>
           <form onSubmit={handleSubmit(handleData)}>
@@ -77,7 +76,7 @@ function Habits() {
               margin="none"
               label="Título"
               placeholder="Título"
-              variant="outlined"
+              variant="filled"
               error={!!errors.title}
               helperText={errors.title?.message}
               {...register("title")}
@@ -87,7 +86,7 @@ function Habits() {
               size="small"
               label="Categoria"
               placeholder="Categoria"
-              variant="outlined"
+              variant="filled"
               margin="none"
               error={!!errors.category}
               helperText={errors.category?.message}
@@ -98,7 +97,7 @@ function Habits() {
               size="small"
               label="Dificuldade"
               placeholder="Dificuldade"
-              variant="outlined"
+              variant="filled"
               margin="none"
               error={!!errors.difficulty}
               helperText={errors.difficulty?.message}
@@ -109,7 +108,7 @@ function Habits() {
               size="small"
               label="Frequência"
               placeholder="Frequência"
-              variant="outlined"
+              variant="filled"
               margin="none"
               error={!!errors.frequency}
               helperText={errors.frequency?.message}
