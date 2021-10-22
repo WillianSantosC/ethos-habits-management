@@ -48,7 +48,7 @@ function SubGroupTasks() {
         },
       })
       .then((res) => {
-        toast.success("Grupo criado");
+        toast.success("Objetivo criado");
       })
       .catch((err) => {
         toast.error("Falha ao criar");

@@ -17,7 +17,7 @@ export const Container = styled.div`
     color: #ffffffe6;
   }
   .MuiInputBase-input {
-    color: black;
+    color: #ffffffe6;
   }
 
   .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
