@@ -27,6 +27,7 @@ const GroupCard = ({
         <CardText>{category}</CardText>
       </DataComponent>
     </Card>
+
   );
 };
 

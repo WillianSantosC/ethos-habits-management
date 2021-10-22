@@ -25,7 +25,6 @@ export const GroupProvider = ({ children }) => {
         },
       })
       .then((res) => setMyGroups(res.data))
-
       .catch((err) => console.log(err));
   }, [token]);
 
@@ -100,6 +99,7 @@ export const GroupProvider = ({ children }) => {
         getUserGroups,
         allGroups,
       }}
+
     >
       {children}
     </GroupContext.Provider>
